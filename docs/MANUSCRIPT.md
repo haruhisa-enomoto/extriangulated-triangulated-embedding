@@ -1,10 +1,12 @@
 # The formalized manuscript
 
-The formalization follows *An extriangulated category with no triangulated
-embedding* by Haruhisa Enomoto, in the version frozen on November 21, 2026 for the
-formalization (revision r8 with its two attribution follow-ups). The manuscript is
-not yet posted to a preprint server; this version is kept in
-[`manuscript/`](manuscript/).
+The formalization follows *An extriangulated category with no triangulated embedding* by
+Haruhisa Enomoto, [hexagon:2611.00805v1](https://hexagonmath.org/2611.00805v1) (version 1,
+November 21, 2026, CC BY 4.0). The formalization was made from the version frozen on
+November 21, 2026; the TeX source posted as hexagon:2611.00805v1 is byte-identical to it (the
+`main.tex` hash below, checked on November 22, 2026). The PDF hash below is that of the
+author's build, kept in [`manuscript/`](manuscript/); Hexagon's own PDF build differs in its
+bytes.
 
 Statement numbers and `main.tex` line numbers in the
 [correspondence](PAPER-CORRESPONDENCE.md) refer to this version, a single-file

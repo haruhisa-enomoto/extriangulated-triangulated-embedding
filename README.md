@@ -1,15 +1,17 @@
 # An extriangulated category with no triangulated embedding
 
-[Paper (formalized version)](docs/MANUSCRIPT.md) ·
+[Website](https://haruhisa-enomoto.github.io/extriangulated-triangulated-embedding/) ·
+[Paper](https://hexagonmath.org/2611.00805v1) ·
 [Main theorems in Lean](ExtriangulatedRealization/MainTheorems.lean) ·
 [Independent statement](ExtriangulatedRealization/Statement.lean) ·
 [Paper correspondence](docs/PAPER-CORRESPONDENCE.md) ·
 [Verification](docs/VERIFICATION.md)
 
 This repository contains a Lean 4 formalization of the paper *An extriangulated
-category with no triangulated embedding* by Haruhisa Enomoto, including the cited
-inputs that it uses. The formalized version is identified in
-[MANUSCRIPT.md](docs/MANUSCRIPT.md). Mathlib is the only dependency.
+category with no triangulated embedding* by Haruhisa Enomoto
+([hexagon:2611.00805v1](https://hexagonmath.org/2611.00805v1)), including the cited inputs
+that it uses. The formalized version is identified in [MANUSCRIPT.md](docs/MANUSCRIPT.md);
+its TeX source is byte-identical to the one posted on Hexagon. Mathlib is the only dependency.
 
 Extriangulated categories (Nakaoka and Palu) axiomatize extension-closed subcategories of
 triangulated categories and are used in representation theory of algebras, cluster

@@ -31,13 +31,14 @@ sources:
   - title: "An extriangulated category with no triangulated embedding"
     authors: ["Haruhisa Enomoto"]
     type: "paper"
-    location: "Unpublished manuscript, version of November 21, 2026, kept in docs/manuscript (SHA-256 in docs/MANUSCRIPT.md)"
+    location: "https://hexagonmath.org/2611.00805v1"
     relationship: "formalizes"
     note: >-
       The formalized paper, developed under the author's direction with
       GPT-6.2 Astra, reviewed with Claude Opus 5.5 and polished with Gemini 4
       Neon. Statements are matched with Lean declarations in
-      docs/PAPER-CORRESPONDENCE.md.
+      docs/PAPER-CORRESPONDENCE.md. The posted TeX source of hexagon:2611.00805v1
+      is byte-identical to the formalized version (SHA-256 in docs/MANUSCRIPT.md).
     author_endorsement: "participated"
   - title: "Positive and negative extensions in extriangulated categories"
     authors: ["M. Gorsky", "H. Nakaoka", "Y. Palu"]

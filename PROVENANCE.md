@@ -1,8 +1,9 @@
 # Provenance
 
 The Lean development is maintained by Haruhisa Enomoto. It formalizes *An
-extriangulated category with no triangulated embedding* by Haruhisa Enomoto,
-following the version identified in [docs/MANUSCRIPT.md](docs/MANUSCRIPT.md). The
+extriangulated category with no triangulated embedding* by Haruhisa Enomoto
+([hexagon:2611.00805v1](https://hexagonmath.org/2611.00805v1)), following the version
+identified in [docs/MANUSCRIPT.md](docs/MANUSCRIPT.md). The
 [correspondence](docs/PAPER-CORRESPONDENCE.md) describes formal coverage.
 
 ## Contributions
