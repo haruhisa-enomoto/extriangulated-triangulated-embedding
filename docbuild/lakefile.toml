@@ -1,0 +1,11 @@
+name = "extriangulated_realization_docbuild"
+version = "0.1.0"
+
+[[require]]
+name = "doc-gen4"
+git = "https://github.com/leanprover/doc-gen4"
+rev = "20afd4ddabd2ef38ffb1a8b930ee0f375e3f75e8"
+
+[[require]]
+name = "extriangulated_realization"
+path = ".."
