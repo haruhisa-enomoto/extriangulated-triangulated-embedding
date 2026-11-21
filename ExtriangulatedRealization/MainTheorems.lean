@@ -1,0 +1,23 @@
+module
+
+public import ExtriangulatedRealization.CD.Structure
+public import ExtriangulatedRealization.Criterion.Bounds
+public import ExtriangulatedRealization.Criterion.TheoremA
+public import ExtriangulatedRealization.Criterion.TheoremB
+public import ExtriangulatedRealization.InverseSystems.Injections
+
+/-!
+# The main theorems
+
+The endpoints of `Statement.lean` are proved in the following places:
+
+* `theoremA` (Theorem A = Theorem 4.5): `Criterion/TheoremA.lean`;
+* `theoremB` (Theorem B = Theorem 3.1): `Criterion/TheoremB.lean`, with the necessity
+  `theoremB_necessity` for targets in all universes in `Criterion/Necessity.lean`;
+* `proposition_2_3`: `Realization/Proposition.lean`;
+* `corollary_2_4`: `Realization/Extriangulated.lean`;
+* `proposition_4_4`: `CD/Structure.lean`;
+* `proposition_4_6`: `Criterion/Bounds.lean`.
+
+Example 4.2 is `Injections.example_4_2` in `InverseSystems/Injections.lean`.
+-/

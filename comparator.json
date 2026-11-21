@@ -1,0 +1,19 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "ExtriangulatedRealization.Challenge.theoremA",
+    "ExtriangulatedRealization.Challenge.theoremB",
+    "ExtriangulatedRealization.Challenge.theoremB_necessity",
+    "ExtriangulatedRealization.Challenge.proposition_2_3",
+    "ExtriangulatedRealization.Challenge.corollary_2_4",
+    "ExtriangulatedRealization.Challenge.proposition_4_4",
+    "ExtriangulatedRealization.Challenge.proposition_4_6"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

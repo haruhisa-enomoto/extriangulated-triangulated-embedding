@@ -1,0 +1,1098 @@
+\documentclass[a4paper,reqno,10pt]{amsart}
+\usepackage{a4wide,amssymb,amsmath,enumitem,tikz-cd}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,pdfusetitle]{hyperref}
+\setlist[enumerate,1]{label={\upshape(\arabic*)}}
+\setlist[enumerate,2]{label={\upshape(\alph*)}}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{introthm}{Theorem}
+\renewcommand{\theintrothm}{\Alph{introthm}}
+\theoremstyle{definition}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{organization}{Organization}
+\newtheorem*{conventions}{Conventions and notation}
+\newtheorem*{aiuse}{Use of AI}
+\newcommand{\B}{\mathcal B}
+\newcommand{\C}{\mathcal C}
+\newcommand{\E}{\mathbb E}
+\newcommand{\T}{\mathcal T}
+\newcommand{\Q}{\mathcal Q}
+\newcommand{\Rcat}{\mathcal R}
+\newcommand{\Kb}{\mathsf K^{\mathrm b}}
+\newcommand{\Db}{\mathsf D^{\mathrm b}}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\coker}{coker}
+
+\title[An extriangulated category with no triangulated embedding]
+{An extriangulated category with no triangulated embedding}
+\author[H.\ Enomoto]{Haruhisa Enomoto}
+\address{Parakeet Inc., Japan}
+\email{haruhisa.enomoto.math@gmail.com}
+\subjclass[2020]{18G80, 18G25, 18E05, 03E05}
+\keywords{extriangulated category, triangulated category, algebraic triangulated category, inverse limit, Aronszajn tree}
+\date{\today}
+
+\begin{document}
+\begin{abstract}
+Over any field, we construct an essentially small hereditary extriangulated
+category with enough injectives that admits no triangulated embedding, that is,
+no fully faithful extriangulated functor into a triangulated category. In
+particular, not every extriangulated category is equivalent as an
+extriangulated category to a full extension-closed subcategory of a
+triangulated category. Nevertheless, every countable family of objects lies in
+a full extension-closed subcategory equivalent as an extriangulated category to
+a full extension-closed subcategory of an algebraic triangulated category. To
+construct this example, we build an extriangulated category from any inverse
+system of vector spaces with surjective transition maps over a nonempty
+ordinal. We prove that it admits a triangulated embedding if and only if every
+projection from the inverse limit is surjective. We obtain the counterexample
+from such an inverse system over the countable ordinals with nonzero initial
+term and vanishing inverse limit.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+
+Extriangulated categories were introduced by Nakaoka and Palu
+\cite[Definition~2.12]{NP} to provide a common framework for triangulated
+categories and exact categories with set-valued first extension groups
+\cite[Example~2.13 and Proposition~3.22(1)]{NP}. A primary source of further
+examples is any full extension-closed subcategory $\C$ of a triangulated
+category $\T$. For $A,C\in\C$, each morphism $\delta:C\to A[1]$ completes to a
+distinguished triangle $A\to B\to C\xrightarrow{\delta}A[1]$ with $B$
+isomorphic to an object of $\C$, and assigning the equivalence class of
+$A\to B\to C$ to $\delta$ equips $\C$ with an extriangulated structure
+\cite[Remark~2.18]{NP}. Gorsky, Nakaoka and Palu \cite[\S1, opening
+paragraph]{GNP} asked whether every extriangulated category arises in this way,
+that is, is equivalent as an extriangulated category to a full extension-closed
+subcategory of a triangulated category. Notice that an ambient triangulated
+category supplies extra structure beyond the extriangulated axioms: applying
+$\Hom$ to its distinguished triangles extends the $\Hom$--$\E$ exact sequences
+to the left via negative shifts.
+
+In this paper, we answer the question of Gorsky, Nakaoka and Palu negatively
+over every field. In fact, our counterexample admits no fully faithful
+extriangulated functor into any triangulated category, even though it is
+hereditary and Krull--Schmidt with enough injectives, and every countable
+family of its objects lies in a full extension-closed subcategory that embeds
+into an algebraic triangulated category.
+
+To state the results precisely, recall that an extriangulated category
+$\mathcal A$ is equipped with a biadditive bifunctor $\E(C,A)$ of extensions,
+contravariant in $C$ and covariant in $A$, together with an assignment sending
+each extension class $\varepsilon\in\E(C,A)$ to a pair $A\to B\to C$ (called a
+\emph{conflation}) up to isomorphism of middle terms fixing $A$ and $C$. An additive functor
+$F:\mathcal A\to\T$ into a triangulated category is \emph{extriangulated} in
+the sense of Bennett-Tennenhaus and Shah \cite[Definition~2.32 with $n=1$]{BS}
+if there exists a natural family of group homomorphisms
+\[
+  \eta_{C,A}:\E(C,A)\longrightarrow\T(FC,FA[1])
+\]
+such that $FA\to FB\to FC\xrightarrow{\eta_{C,A}(\varepsilon)}FA[1]$ is a
+distinguished triangle in $\T$ for every conflation $A\to B\to C$ realizing
+$\varepsilon$. We call such a pair $(F,\eta)$ a \emph{triangulated embedding}
+if $F$ is fully faithful, and a \emph{triangulated realization} if, in
+addition, every $\eta_{C,A}$ is an isomorphism. If $(F,\eta)$ is a triangulated
+realization, then every morphism $FC\to FA[1]$ is of the form
+$\eta_{C,A}(\varepsilon)$ for some $\varepsilon\in\E(C,A)$, so the middle term
+of its distinguished triangle is isomorphic to $FB$ for a conflation
+$A\to B\to C$. Hence the essential image of $F$ is extension-closed in $\T$,
+and $F$ is an extriangulated equivalence onto it with the induced structure.
+Conversely, the inclusion of a full extension-closed subcategory with its
+induced structure is a triangulated realization. A triangulated category is
+\emph{algebraic} if it is triangle equivalent to the stable category of a
+Frobenius exact category, and a triangulated realization into an algebraic
+triangulated category is called an \emph{algebraic realization}.
+
+For an essentially small extriangulated category $\mathcal A$, we use the
+positive Yoneda extensions $\E^n$ defined by Gorsky, Nakaoka and Palu
+\cite[Definition~3.1 and Remarks~3.2--3.3]{GNP} on a small skeleton. The
+bifunctor $\E^n$ is the $n$-th tensor power of $\E$ over $\mathcal A$, so its
+elements are sums of products of $n$ composable extension classes. By
+\cite[Proposition~2.1(1)(iii) and Definition~2.3]{GNP2}, $\mathcal A$ is
+\emph{hereditary} precisely when $\E^2=0$. An object $U\in\mathcal A$ is
+\emph{injective} if every morphism $A\to U$ factors through $A\to B$ for every
+conflation $A\to B\to C$, or equivalently if $\E(-,U)=0$ \cite[dual of
+Proposition~3.24]{NP}. The category $\mathcal A$ has \emph{enough injectives}
+if every object occurs as the first term of a conflation whose middle term is
+injective.
+
+Since every triangulated realization is a triangulated embedding, part~(1) of
+our first main theorem answers the question of Gorsky, Nakaoka and Palu
+negatively.
+
+\begin{introthm}[= Theorem~\ref{thm:example}]\label{intro:example}
+Over every field $k$ there exists an essentially small $k$-linear
+extriangulated category $\C$ with the following properties.
+\begin{enumerate}
+\item The category $\C$ has no triangulated embedding.
+\item Every countable family of objects of $\C$ is contained in a full
+extension-closed subcategory having an algebraic realization.
+\item The category $\C$ is hereditary and Krull--Schmidt, and has enough
+injectives. It has $\aleph_1$ isomorphism classes of indecomposables.
+Each indecomposable has endomorphism ring $k$, and
+$\dim_k\E(C,A)\leq 1$ for all indecomposables $A,C$. Every morphism space
+has at most countable dimension over $k$.
+\end{enumerate}
+\end{introthm}
+
+Theorem~\ref{intro:example} also has consequences for enhancements by exact
+$\infty$-categories and exact dg categories. Klemenc \cite[Theorem~1.2]{Kl}
+showed that every small exact $\infty$-category embeds into its stable hull as
+an extension-closed subcategory. On homotopy categories, this produces a triangulated realization of
+the extriangulated structure constructed by Nakaoka and Palu
+\cite[Theorem~4.22]{NP2} (see \cite[\S5.5, before Question~5.40]{GNP}); in
+particular, this covers small ordinary exact categories via their nerves
+\cite[\S4.3]{Kl}. Furthermore, Chen \cite[Proposition-Definition~3.15]{Ch}
+characterized the essentially small extriangulated categories admitting an
+algebraic realization as those equivalent, as extriangulated categories, to the
+homotopy categories of exact dg categories. Consequently,
+Theorem~\ref{intro:example}(1) shows that $\C$ is not equivalent as an
+extriangulated category to the homotopy category of any small exact
+$\infty$-category or exact dg category.
+
+We obtain $\C$ as a member of a general family of extriangulated categories
+associated to inverse systems of vector spaces. Let $I$ be a nonempty ordinal
+and let $D=(D_i,\pi_{ji}:D_j\to D_i)_{i\le j\text{ in }I}$ be an inverse system
+of $k$-vector spaces with surjective transition maps. Adjoining a new least
+element $*$ below $0\in I$, we consider covariant representations of the
+resulting poset. Write $A_i$ and $P_i$ for the interval representations
+supported on $[0,i]$ and $[*,i]$, respectively, with value $k$ and identity
+maps on their supports. The inclusions $A_i\to P_i$ share the common quotient
+$Y$, supported at $*$, and for $i\le j$ the quotient map $P_j\to P_i$ restricts
+to $A_j\to A_i$ and induces the identity on $Y$.
+
+In Construction~\ref{con:category}, we adjoin a single object $X$ to the full
+additive subcategory generated by $Y$ and the $A_i,P_i$ so that the morphism
+spaces from $X$ to the $A_i$ form the inverse system $D$, while all morphisms
+from $X$ to $P_i$ or $Y$ (and from these interval objects to $X$) vanish. In
+particular, every composite $X\to A_i\to P_i$ is zero. We equip the resulting
+additive category $\C(D)$ with the extension bifunctor pulled back from the
+interval representations, so that each interval sequence $A_i\to P_i\to Y$ is a
+conflation in $\C(D)$. Our second main theorem characterizes when $\C(D)$
+embeds into a triangulated category.
+
+\begin{introthm}[= Theorem~\ref{thm:criterion}]\label{intro:criterion}
+For every inverse system $D=(D_i)_{i\in I}$ of vector spaces over a field,
+with surjective transition maps and indexed by a nonempty ordinal $I$, the
+following conditions on $\C(D)$ and $D$ are equivalent.
+\begin{enumerate}
+\item The category $\C(D)$ admits a triangulated embedding.
+\item The projection $\varprojlim D\to D_i$ is surjective for every $i\in I$.
+\item The category $\C(D)$ has an algebraic realization.
+\end{enumerate}
+\end{introthm}
+
+Let us explain the idea behind Theorem~\ref{intro:criterion}. Given a
+triangulated embedding $(F,\eta):\C(D)\to\T$, the group $\T(FX,FY[-1])$ serves
+as the ambient group of negative first extensions from $X$ to $Y$
+\cite[\S5.5]{GNP}. Applying $\T(FX,-)$ to the distinguished triangle
+$FA_i\to FP_i\to FY\to FA_i[1]$ yields a surjection from $\T(FX,FY[-1])$ onto
+$\T(FX,FA_i)\simeq D_i$, because every morphism $X\to A_i$ composes to zero
+with $A_i\to P_i$. Since the transition maps between the interval conflations
+induce the identity on $Y$, these surjections are compatible with the
+transition maps $\pi_{ji}$, and therefore induce a homomorphism
+$\T(FX,FY[-1])\to\varprojlim D$ whose composite with every projection
+$\varprojlim D\to D_i$ is surjective. Conversely, given any vector space $W$
+admitting compatible surjections onto all $D_i$, we construct in
+Proposition~\ref{prop:complex} an algebraic realization of $\C(D)$ inside a
+bounded homotopy category $\Kb(\Q)$ in which $W$ realizes this degree $-1$
+morphism space.
+
+To prove Theorem~\ref{intro:example}, we apply Theorem~\ref{intro:criterion} to
+the inverse system of free vector spaces on the levels of an Aronszajn tree, as
+studied by Dimitri\'c \cite[FC2, pp.~20--21]{Di}. By Bergman \cite[p.~6, argument
+preceding Corollary~8]{Be2} (see also Lemma~\ref{lem:linear}), this inverse system
+has trivial limit, whereas the tree in Construction~\ref{con:tree} has a single
+root and thus $D_0=k$. Consequently, the projection $\varprojlim D\to D_0$ is
+not surjective, so $\C(D)$ admits no triangulated embedding by
+Theorem~\ref{intro:criterion}. On the other hand, every countable set of
+countable ordinals has a countable upper bound $m$, and the transition maps
+from $D_m$ surject onto all terms at indices $\le m$, yielding an algebraic
+realization of the corresponding full extension-closed subcategory.
+
+Theorem~\ref{intro:example}(2) shows that the obstruction to a triangulated
+embedding involves uncountably many indecomposables. In
+Proposition~\ref{prop:bounds}, we show that within the family $\C(D)$ both the
+size of the index set and the dimension of the morphism spaces in
+Theorem~\ref{intro:example} are minimal. Specifically, any counterexample of
+the form $\C(D)$ must be indexed by an ordinal of uncountable cofinality (so
+$|I|\ge\aleph_1$) and must have an infinite-dimensional morphism space
+$\C(D)(X,A_i)=D_i$. We do not know whether every essentially small $k$-linear
+extriangulated category with finite-dimensional morphism spaces has a
+triangulated realization.
+
+\begin{organization}
+In Section~\ref{sec:intervals}, we construct the categories $\C(D)$ and their
+subcategories $\C_J$ from interval representations, and we prove in
+Proposition~\ref{prop:complex} that $\C_J$ admits an algebraic realization
+whenever the spaces $D_i$ ($i\in J$) are compatible quotients of a single
+vector space. Applying this to finite subsets verifies the extriangulated
+axioms for $\C(D)$. In Section~\ref{sec:criterion}, we prove
+Theorem~\ref{intro:criterion}. In Section~\ref{sec:example}, we first obtain a
+quick counterexample from the inverse system of injections of countable
+ordinals into $\mathbb N$ given by Bergman \cite[p.~7]{Be2}
+and later by Wofsey \cite{Wo}, and then pass to an
+Aronszajn tree with countable levels to prove Theorem~\ref{intro:example}.
+Finally, Proposition~\ref{prop:bounds} establishes the minimality of the
+cardinality and dimension bounds within the family $\C(D)$.
+\end{organization}
+
+\begin{conventions}
+We fix a field $k$ and equip every ordinal with its usual well-order. For a
+category $\mathcal A$, we write $\mathcal A(C,A)$ for the set of morphisms from
+$C$ to $A$. Subcategories specified by collections of objects and their finite
+direct sums are understood to be closed under isomorphism. We use cochain
+complexes with shift convention $M[1]^n=M^{n+1}$, and write $\Kb(\mathcal A)$
+for the bounded homotopy category of an additive category $\mathcal A$.
+\end{conventions}
+
+\begin{aiuse}
+The author posed the problem of settling the triangulated realization question
+for extriangulated categories and directed the search for a simple, conceptual
+counterexample. The counterexample, embedding criterion, and proofs presented
+here were developed by GPT-6.2 Astra under the author's direction. The initial
+manuscript, citation check, and mathematical audits were carried out by
+GPT-6.2 Astra; independent exposition reviews were performed by Claude
+Opus~5.5; and the structure, exposition, and proof presentation were polished
+with Gemini~4 Neon. The author directed the research and revisions and is
+responsible for the mathematical content and the final manuscript.
+\end{aiuse}
+
+\section{Construction of the extriangulated category from intervals}\label{sec:intervals}
+
+Throughout this section, let $I$ be a nonempty ordinal and let
+$D=(D_i,\pi_{ji}:D_j\to D_i)_{i\le j\text{ in }I}$ be an inverse system of
+$k$-vector spaces with surjective transition maps. For each subset
+$J\subseteq I$, we construct the full subcategory $\C_J$ of $\C(D)$ generated
+under finite direct sums by $X$, $Y$, and the interval objects $A_i,P_i$ with
+$i\in J$. We first study the underlying category of interval representations,
+then construct $\C_J$ and realize it by bounded complexes whenever a single
+vector space maps compatibly onto all $D_i$ ($i\in J$), and finally use finite
+subsets $J$ to verify the extriangulated category axioms for $\C(D)$.
+
+Since $I$ is a nonempty ordinal, it has a least element $0$. We adjoin a new
+least element $*$ below $0$ and write $I_*$ for the resulting well-ordered set.
+A representation $M$ of $I_*$ is a covariant functor from $I_*$ to the category
+of $k$-vector spaces, assigning a $k$-vector space $M(t)$ to each $t\in I_*$
+and a linear structure map $M(s\le t):M(s)\to M(t)$ to each pair $s\le t$ in
+$I_*$. These representations form an abelian category $\Rcat$ in which
+exactness is checked pointwise.
+
+For an interval $U\subseteq I_*$, let $k_U\in\Rcat$ be the interval
+representation with value $k$ on $U$ and $0$ elsewhere, and with identity
+structure maps between points of $U$. We work with the intervals
+\[
+  Y=k_{\{*\}},\qquad A_i=k_{[0,i]},\qquad P_i=k_{[*,i]}
+       \qquad(i\in I).
+\]
+Write $b_i:A_i\to P_i$ for the canonical inclusion and $c_i:P_i\to Y$ for the
+canonical quotient. For $i\leq j$ in $I$, there are canonical quotient maps
+$a_{ji}:A_j\to A_i$ and $p_{ji}:P_j\to P_i$, which fit into a morphism of short
+exact sequences
+\begin{equation}\label{eq:rows}
+\begin{tikzcd}[column sep=1.8em]
+0\ar[r]&A_j\ar[r,"b_j"]\ar[d,"a_{ji}"']&P_j\ar[r,"c_j"]\ar[d,"p_{ji}"]&
+Y\ar[r]\ar[d,equal]&0\\
+0\ar[r]&A_i\ar[r,"b_i"']&P_i\ar[r,"c_i"']&Y\ar[r]&0 .
+\end{tikzcd}
+\end{equation}
+For $J\subseteq I$, let $\B_J$ be the full subcategory of $\Rcat$ consisting of
+finite direct sums of $Y$ and the $A_i,P_i$ with $i\in J$. We begin by showing
+that each $\B_J$ is extension-closed in $\Rcat$ and has enough injectives.
+
+\begin{lemma}\label{lem:intervals}
+For every $J\subseteq I$, the subcategory $\B_J$ is extension-closed in
+$\Rcat$. With its induced exact structure, it has enough injectives.
+The objects $P_i$ and $Y$ are injective in $\Rcat$, and
+$0\to A_i\xrightarrow{b_i}P_i\xrightarrow{c_i}Y\to0$ is an injective
+resolution for each $i\in J$.
+\end{lemma}
+\begin{proof}
+Botnan and Crawley-Boevey \cite[Lemma~2.1 and Theorem~1.2]{BCB} prove
+injectivity for interval representations supported on directed ideals and
+interval decomposition for pointwise finite-dimensional representations of an
+arbitrary total order. For the principal ideals needed here, we give a direct
+two-step argument: evaluation yields injectivity, and splitting on $I$
+determines the middle term of any extension in $\B_J$.
+
+\medskip\noindent\textbf{Step 1: Injective intervals.}
+For any $t\in I_*$ and $M\in\Rcat$, evaluation at $t$ yields a natural
+isomorphism
+\[
+  \Rcat(M,k_{[*,t]})\ \simeq\ \Hom_k(M(t),k).
+\]
+Indeed, a morphism $\varphi:M\to k_{[*,t]}$ vanishes at every point strictly
+above $t$, and for $s\le t$ its component $\varphi_s:M(s)\to k$ is uniquely
+determined by $\varphi_t:M(t)\to k$ via $\varphi_s=\varphi_t\circ M(s\le t)$;
+conversely, every linear functional on $M(t)$ defines a morphism in this way.
+Since evaluation at $t$ and vector space duality are exact, $k_{[*,t]}$ is
+injective in $\Rcat$. Taking $t=i$ and $t=*$ shows that $P_i$ and $Y$ are
+injective in $\Rcat$. The same argument applied to $I$ in place of $I_*$ shows
+that $k_{[0,i]}$ is injective in the category of representations of $I$.
+
+\medskip\noindent\textbf{Step 2: Closure of $\B_J$ under extensions.}
+Consider a short exact sequence in $\Rcat$ with outer terms in $\B_J$ and
+middle term $M$. On $I$, we have $Y|_I=0$ and $A_i|_I=P_i|_I=k_{[0,i]}$. Hence
+the restriction of the first term to $I$ is a finite direct sum of the
+injective representations $k_{[0,i]}$, so the restricted short exact sequence
+splits. It follows that $M|_I$ is a finite direct sum of intervals $k_{[0,i]}$
+whose endpoints belong to the finite subset of $J$ occurring in the outer
+terms. List the distinct endpoints occurring in $M|_I$ in increasing order as
+$i_1<\dots<i_r$.
+
+If $r=0$, then $M|_I=0$, so $M$ is supported at $*$ and hence
+$M\simeq Y^{\dim_k M(*)}\in\B_J$ (as $M(*)$ is finite-dimensional). Assume now
+that $r\ge 1$, and write $V=M(0)$ and $d=M(*\le 0):M(*)\to V$. Define a flag
+$0=V_0\subset V_1\subset\dots\subset V_r=V$ by setting
+\[
+  V_0=0,\qquad V_s=\ker\bigl(M(0\le i_{s+1}):V\to M(i_{s+1})\bigr)\ \ (0<s<r),\qquad V_r=V.
+\]
+Under the decomposition of $M|_I$ into intervals $k_{[0,i_u]}$, the subspace
+$V_s$ is the direct sum of the values at $0$ of the summands with $u\le s$,
+since $k_{[0,i_u]}(t)$ equals $k$ for $t\le i_u$ and $0$ for $t>i_u$.
+Consequently, for every $t\in I$, if $s$ is the number of indices
+$u\in\{1,\dots,r\}$ with $i_u<t$, then the structure map $M(0\le t):V\to M(t)$
+is surjective with kernel $V_s$, inducing an isomorphism $V/V_s\simeq M(t)$ under
+which the structure maps on $I$ correspond to the canonical quotient maps
+$V/V_s\to V/V_{s'}$.
+
+Set $W_s=\im d\cap V_s$ for $0\le s\le r$, and put
+$m_s=\dim_k(W_s/W_{s-1})$ and $n_s=\dim_k(V_s/V_{s-1})-m_s$ for $1\le s\le r$.
+For each $s=1,\dots,r$, we choose vectors $v_{s,1},\dots,v_{s,m_s}\in W_s$
+whose cosets form a basis of $W_s/W_{s-1}$. Because
+$W_s\cap V_{s-1}=W_{s-1}$, their cosets in $V_s/V_{s-1}$ are linearly
+independent, so we may extend them to a basis of $V_s/V_{s-1}$ by adjoining
+the cosets of vectors $w_{s,1},\dots,w_{s,n_s}\in V_s$. Together, all
+$v_{s,\alpha}$ and $w_{s,\beta}$ form a basis of $V$ adapted to the flag
+$V_0\subset\dots\subset V_r$. For each $v_{s,\alpha}\in\im d$, choose a
+preimage $\tilde v_{s,\alpha}\in M(*)$ with $d(\tilde v_{s,\alpha})=v_{s,\alpha}$,
+and complete these lifts to a basis of $M(*)$ by adjoining a basis of $\ker d$.
+Each basis vector of $\ker d$ generates a subrepresentation isomorphic to $Y$;
+each $\tilde v_{s,\alpha}$ generates a subrepresentation isomorphic to
+$P_{i_s}$ (since $v_{s,\alpha}\in V_s\setminus V_{s-1}$); and each
+$w_{s,\beta}$ (with zero component at $*$) generates a subrepresentation
+isomorphic to $A_{i_s}$. Since these subrepresentations span $M(t)$ linearly
+independently at every $t\in I_*$ and $M(*)$ is finite-dimensional, we obtain
+\[
+ M\simeq Y^{\dim_k\ker d}\oplus
+ \bigoplus_{s=1}^r\bigl(P_{i_s}^{m_s}\oplus A_{i_s}^{n_s}\bigr).
+\]
+Thus $M\in\B_J$, proving that $\B_J$ is extension-closed in $\Rcat$. Finally,
+since $P_i$ and $Y$ are injective in $\Rcat$ (hence in $\B_J$), the sequences
+$0\to A_i\xrightarrow{b_i}P_i\xrightarrow{c_i}Y\to0$ are injective resolutions in
+$\B_J$; taking finite direct sums with the identity maps on $P_i$ and $Y$ shows
+that $\B_J$ has enough injectives.
+\end{proof}
+
+Before adjoining $X$ to $\B_J$, we record a basis for each morphism space
+between the indecomposable objects $A_j,P_j,Y$ of $\B_J$. In the table below,
+each nonzero entry spans the corresponding morphism space
+$\B_J(\text{source},\text{target})$, and an entry marked with the condition
+$i\le j$ is understood to be $0$ when $i>j$:
+\begin{equation}\label{eq:hom}
+\begin{array}{c|ccc}
+ \text{source}\ \backslash\ \text{target}& A_i&P_i&Y\\ \hline
+ A_j & a_{ji}\ (i\le j)& b_i a_{ji}\ (i\le j)&0\\
+ P_j & 0 & p_{ji}\ (i\le j) & c_j\\
+ Y   & 0 & 0 & 1_Y
+\end{array}
+\end{equation}
+Indeed, by Step~1 of the proof of Lemma~\ref{lem:intervals}, we have
+$\Rcat(M,P_i)\simeq\Hom_k(M(i),k)$ and $\Rcat(M,Y)\simeq\Hom_k(M(*),k)$ via
+evaluation at $i$ and $*$, respectively. In particular, $\Rcat(A_j,P_i)$ is
+one-dimensional with basis $b_i a_{ji}$ when $i\le j$ (since $b_i a_{ji}$ acts
+as the identity at $i$) and vanishes when $i>j$; the remaining entries in the
+columns for $P_i$ and $Y$ follow in the same way. Finally, because
+$0\to A_i\xrightarrow{b_i}P_i\xrightarrow{c_i}Y\to0$ is exact, morphisms
+$M\to A_i$ correspond to morphisms $M\to P_i$ whose composite with $c_i$
+vanishes, yielding the first column of \eqref{eq:hom}.
+
+\begin{construction}\label{con:category}
+Let $D=(D_i,\pi_{ji}:D_j\to D_i)_{i\leq j\text{ in }I}$ be an inverse system of
+$k$-vector spaces with surjective transition maps. For $J\subseteq I$, we form
+a $k$-linear additive category $\C_J$ by adjoining an object $X$ to $\B_J$ and
+taking finite direct sums, with morphism spaces
+\begin{equation}\label{eq:X}
+  \C_J(X,X)=k,\qquad \C_J(B,X)=0,\qquad
+  \C_J(X,A_i)=D_i,\qquad \C_J(X,P_i)=0,\qquad \C_J(X,Y)=0
+\end{equation}
+for all $B\in\B_J$ and $i\in J$. For $i\le j$ in $J$, we define postcomposition
+with $a_{ji}:A_j\to A_i$ on $\C_J(X,A_j)=D_j$ to be $\pi_{ji}:D_j\to D_i$.
+Together with \eqref{eq:hom}, $k$-bilinearity, and the action of
+$\C_J(X,X)=k$ by scalar multiplication, this determines composition on all
+objects of $\C_J$. To check associativity on morphisms out of $X$, we only need
+to verify composites $X\to A_j\to A_i\to A_h$ with $h\le i\le j$, since every
+morphism from $X$ to $P_i$ or $Y$ is zero; on the generators $a_{ji}$ and
+$a_{ih}$, associativity is precisely the identity $\pi_{ih}\pi_{ji}=\pi_{jh}$.
+
+Thus the underlying additive category of $\C_J$ is the additive closure of the
+one-point extension of $\B_J$ by the covariant module $B\mapsto\C_J(X,B)$, in
+the sense of Herscovich and Solotar \cite[\S3]{HeS}. We write $\C(D)=\C_I$.
+Every object of $\C_J$ has the form $B\oplus X^a$ with $B\in\B_J$ and
+$a\ge 0$. Sending $B\oplus X^a$ to $B$ and each morphism to its component
+between the $\B_J$-summands defines a $k$-linear functor $\rho:\C_J\to\B_J$
+with $\rho X=0$; it respects composition because $\C_J(B,X)=0$ for all
+$B\in\B_J$. We define a biadditive bifunctor $\E_J$ on $\C_J$ by
+\[
+    \E_J(C,A)=\Ext^1_{\B_J}(\rho C,\rho A)
+\]
+on objects and morphisms, and write $\E=\E_I$ for $\C(D)$. In particular, every
+morphism $u:X\to A_i$ acts as zero on $\E_J$ because $\rho u=0$. For objects
+$A=\rho A\oplus X^a$ and $C=\rho C\oplus X^c$ of $\C_J$, let a class
+$\xi\in\E_J(C,A)$ be represented by a short exact sequence
+$0\to\rho A\to M\to\rho C\to0$ in $\B_J$. We assign to $\xi$ the equivalence
+class (up to isomorphism of middle terms fixing $A$ and $C$) of the direct sum
+of $\rho A\to M\to\rho C$ and the split sequence
+$X^a\to X^a\oplus X^c\to X^c$.
+\end{construction}
+
+To realize the morphisms $X\to A_i$ as chain maps modulo homotopy, we realize
+the spaces $D_i$ ($i\in J$) as compatible quotients of a single vector space.
+
+\begin{proposition}\label{prop:complex}
+Suppose that a vector space $W$ admits surjections $q_i:W\to D_i$ for
+$i\in J$ satisfying $\pi_{ji}q_j=q_i$ for all $i\le j$ in $J$.
+Then the data of Construction~\ref{con:category} equip $\C_J$ with an
+extriangulated structure admitting an algebraic realization
+$(F,\eta):\C_J\to\Kb(\Q)$ for some additive category $\Q$.
+\end{proposition}
+\begin{proof}
+We divide the proof into three steps: first we realize $\B_J$ by bounded
+complexes of injectives, next we enlarge the category of terms to realize $X$
+and construct a fully faithful functor $F:\C_J\to\Kb(\Q)$, and finally we
+identify the extension groups and verify the algebraic realization.
+
+\medskip\noindent\textbf{Step 1: Realizing $\B_J$ in $\Kb(\Q_0)$.}
+Let $\Q_0$ be the full subcategory of $\Rcat$ consisting of finite direct sums
+of $Y$ and the $P_i$ ($i\in J$). By Lemma~\ref{lem:intervals}, every object of
+$\Q_0$ is injective in $\Rcat$. We represent $Y$ and each $P_i$ as stalk
+complexes concentrated in degree $0$, and each $A_i$ by the two-term complex
+\[
+    H_i=(P_i\xrightarrow{c_i}Y)\qquad\text{in degrees }0,1.
+\]
+The inclusion of the stalk $A_i$ into $H_i$ is a quasi-isomorphism in
+$\Db(\Rcat)$. Extending additively over finite direct sums assigns to each
+$B\in\B_J$ a complex $H_B\in\Kb(\Q_0)$ together with a quasi-isomorphism
+$B\to H_B$. By \cite[Tag 05TG]{Stacks}, morphisms in $\Db(\Rcat)$ into a
+bounded complex of injectives are computed modulo chain homotopy, so the
+canonical functor $\Kb(\Q_0)\to\Db(\Rcat)$ is fully faithful. Because
+$\B_J\hookrightarrow\Rcat\hookrightarrow\Db(\Rcat)$ is also fully faithful,
+$B\mapsto H_B$ defines a fully faithful $k$-linear functor
+$\B_J\to\Kb(\Q_0)$. Moreover, for $B,C\in\B_J$ we obtain natural isomorphisms
+\[
+  \Kb(\Q_0)(H_C,H_B[1])
+     \ \simeq\ \Db(\Rcat)(C,B[1])
+     \ \simeq\ \Ext^1_{\Rcat}(C,B)
+     \ \simeq\ \Ext^1_{\B_J}(C,B),
+\]
+where the last isomorphism holds because $\B_J$ is extension-closed in $\Rcat$
+by Lemma~\ref{lem:intervals}. Given a short exact sequence
+$0\to B\to M\to C\to0$ in $\B_J$, let $H_C\to H_B[1]$ be the morphism in
+$\Kb(\Q_0)$ corresponding to its class under this isomorphism, and complete it
+to a distinguished triangle $H_B\to E\to H_C\to H_B[1]$ in $\Kb(\Q_0)$. In
+$\Db(\Rcat)$, this triangle is isomorphic to the distinguished triangle
+$B\to M\to C\to B[1]$ by an isomorphism restricting to the chosen
+quasi-isomorphisms on $B$ and $C$. Since $M\in\B_J$, full faithfulness of
+$\Kb(\Q_0)\to\Db(\Rcat)$ yields an isomorphism $E\simeq H_M$ in $\Kb(\Q_0)$
+identifying the first two arrows of the triangle with the images of
+$B\to M\to C$.
+
+\medskip\noindent\textbf{Step 2: Adjoining $L$ and defining $F$.}
+Set $K_i=\ker q_i$ for each $i\in J$. To represent morphisms $X\to A_i$ by
+homotopy classes in $W/K_i\simeq D_i$, we arrange that $W$ is the space of
+chain maps and $K_i$ its subspace of null-homotopic maps. As in
+Construction~\ref{con:category}, let $\Q$ be the additive closure of the
+one-point extension obtained by adjoining a new object $L$ to $\Q_0$, with
+\[
+  \Q(L,L)=k,\qquad \Q(Q,L)=0,\qquad \Q(L,P_i)=K_i,\qquad \Q(L,Y)=W
+\]
+for all $Q\in\Q_0$ and $i\in J$. For $i\le j$ in $J$, the identity
+$q_i=\pi_{ji}q_j$ implies $K_j\subseteq K_i$. We define postcomposition of
+morphisms out of $L$ with $p_{ji}:P_j\to P_i$ and $c_i:P_i\to Y$ to be the
+inclusions $K_j\hookrightarrow K_i$ and $K_i\hookrightarrow W$, respectively.
+By \eqref{eq:hom}, the composition relations among generators of $\Q_0$ are
+$c_i p_{ji}=c_j$ and $p_{ih}p_{ji}=p_{jh}$ ($h\le i\le j$ in $J$), which act on
+$K_j$ by the inclusions $K_j\hookrightarrow W$ and $K_j\hookrightarrow K_h$, so
+composition is associative. Since chain maps and homotopies between complexes
+with terms in $\Q_0$ are unchanged in $\Q$, the inclusion
+$\Kb(\Q_0)\hookrightarrow\Kb(\Q)$ is fully faithful.
+
+We represent $X$ by the stalk complex $L[-1]$, concentrated in degree $1$.
+Since $L[-1]$ and $Y[-1]$ are stalks in degree $1$, we have
+$\Kb(\Q)(L[-1],Y[-1])=\Q(L,Y)=W$. Similarly, a chain map $L[-1]\to H_i$ is
+given simply by a morphism $L\to Y$ in degree $1$, i.e., an element of $W$, and
+it is null-homotopic precisely when it equals $c_i h$ for some
+$h\in\Q(L,P_i)=K_i$. Hence $q_i$ induces an isomorphism
+\begin{equation}\label{eq:quotient}
+    \Kb(\Q)(L[-1],H_i)=W/K_i\xrightarrow[\ \sim\ ]{\bar q_i} D_i .
+\end{equation}
+We define $F$ on $\C_J(X,A_i)=D_i$ to be $\bar q_i^{-1}$, sending $u\in D_i$ to
+the homotopy class of any $w\in W$ with $q_i(w)=u$. By \eqref{eq:rows}, the
+chain map $H_j\to H_i$ representing $a_{ji}$ has components $(p_{ji},1_Y)$, so
+postcomposition with it on \eqref{eq:quotient} is the canonical projection
+$W/K_j\to W/K_i$, which corresponds under $\bar q_j$ and $\bar q_i$ to
+$\pi_{ji}$ because $\pi_{ji}q_j=q_i$. Moreover, $\Kb(\Q)(L[-1],P_i)=0$ and
+$\Kb(\Q)(L[-1],Y)=0$ for degree reasons; $\Kb(\Q)(H_B,L[-1])=0$ for every
+$B\in\B_J$ because $\Q(Q,L)=0$ for all $Q\in\Q_0$; and
+$\Kb(\Q)(L[-1],L[-1])=\Q(L,L)=k$. Extending $B\mapsto H_B$ ($B\in\B_J$) and
+$X\mapsto L[-1]$ additively therefore defines a fully faithful $k$-linear
+functor $F:\C_J\to\Kb(\Q)$.
+
+\medskip\noindent\textbf{Step 3: Identifying extensions and verifying the realization.}
+For every $B\in\B_J$, the morphism spaces
+\[
+ \Kb(\Q)(L[-1],H_B[1]),\qquad
+ \Kb(\Q)(H_B,L),\qquad
+ \Kb(\Q)(L[-1],L)
+\]
+all vanish: $H_B[1]$ is concentrated in degrees $-1$ and $0$ (whereas $L[-1]$
+is in degree $1$), the terms of $H_B$ admit no nonzero morphisms to $L$, and
+$L[-1]$ and $L$ are stalks in distinct degrees. Consequently, for any
+$C,A\in\C_J$, every morphism $FC\to FA[1]$ is uniquely determined by its
+component $H_{\rho C}\to H_{\rho A}[1]$. Combining this with the isomorphisms of
+Step~1 gives a group isomorphism
+\[
+ \eta_{C,A}:\E_J(C,A)=\Ext^1_{\B_J}(\rho C,\rho A)
+      \xrightarrow{\ \sim\ }\Kb(\Q)(FC,FA[1]).
+\]
+For morphisms $f:C'\to C$, $g:A\to A'$, and any $\xi\in\E_J(C,A)$, we have
+\[
+ (Fg)[1]\,\eta_{C,A}(\xi)\,(Ff)
+     =\eta_{C',A'}\bigl((\rho g)_*(\rho f)^*\xi\bigr).
+\]
+Indeed, writing $A=\rho A\oplus X^a$, $C=\rho C\oplus X^c$, and similarly for
+$A'$ and $C'$, the morphism $\eta_{C,A}(\xi)$ has only its
+$(H_{\rho C},H_{\rho A}[1])$-component nonzero. Since
+$\Kb(\Q)(L[-1],H_{\rho A}[1])=0$, the component of $\eta_{C,A}(\xi)(Ff)$ out of
+$F(X^{c'})$ vanishes; similarly, $\eta_{C,A}(\xi)$ factors through
+$H_{\rho A}[1]$, and since $\Kb(\Q)(H_{\rho A}[1],L)=0$ (as $\Q(Q,L)=0$ for all
+$Q\in\Q_0$), the component of $(Fg)[1]\eta_{C,A}(\xi)$ into $F(X^{a'})[1]$
+vanishes as well. On the remaining component $H_{\rho C'}\to H_{\rho A'}[1]$,
+the identity follows from the naturality of the isomorphisms in Step~1.
+
+Because each $\eta_{C,A}$ is surjective, every morphism $FC\to FA[1]$ equals
+$\eta_{C,A}(\xi)$ for some $\xi\in\E_J(C,A)$. Represent $\xi$ by a short exact
+sequence $0\to\rho A\to M\to\rho C\to0$ in $\B_J$. By Step~1, the image
+$H_{\rho A}\to H_M\to H_{\rho C}$ completes to a distinguished triangle in
+$\Kb(\Q)$ with connecting morphism corresponding to $\xi$. Taking the direct
+sum with the split distinguished triangle
+$F(X^a)\to F(X^a\oplus X^c)\to F(X^c)\xrightarrow{0}F(X^a)[1]$ produces a
+distinguished triangle with connecting morphism $\eta_{C,A}(\xi)$ whose first
+two arrows are the image under $F$ of the pair assigned to $\xi$ in
+Construction~\ref{con:category}. Since every distinguished triangle with
+connecting morphism $\eta_{C,A}(\xi)$ is isomorphic to this one fixing $FA$ and
+$FC$, the essential image of $F$ is extension-closed in $\Kb(\Q)$, and $\eta$
+identifies its induced extriangulated structure \cite[Remark~2.18]{NP} with
+that of Construction~\ref{con:category}.
+
+Finally, with the degreewise split exact structure, the category of bounded
+complexes over $\Q$ is a Frobenius exact category whose projective-injective
+objects are the contractible complexes. Its stable category is $\Kb(\Q)$
+because the morphisms factoring through contractible complexes are precisely
+the null-homotopic chain maps (see Keller \cite[\S2.3]{Ke}). Hence $(F,\eta)$
+is an algebraic realization of $\C_J$.
+\end{proof}
+
+We can now verify the extriangulated category axioms for $\C(D)$ without
+assuming the existence of a single space mapping compatibly onto all $D_i$
+($i\in I$).
+
+\begin{corollary}\label{cor:axioms}
+Construction~\ref{con:category} yields an essentially small $k$-linear
+extriangulated category $\C(D)$. Each $\C_J$ ($J\subseteq I$) is a full
+extension-closed subcategory with its induced structure. If $J$ has a largest
+element, then $\C_J$ admits an algebraic realization.
+\end{corollary}
+\begin{proof}
+If $J\subseteq I$ has a largest element $m$, then applying
+Proposition~\ref{prop:complex} with $W=D_m$ and $q_i=\pi_{mi}$ ($i\in J$)
+provides an algebraic realization of $\C_J$; in particular, every such $\C_J$
+is an extriangulated category.
+
+Whenever $J\subseteq J'\subseteq I$, the inclusion $\C_J\hookrightarrow\C_{J'}$
+is full and identifies $\E_J(C,A)$ with $\E_{J'}(C,A)$ for all $A,C\in\C_J$,
+since both are naturally isomorphic to $\Ext^1_{\Rcat}(\rho C,\rho A)$ by
+Lemma~\ref{lem:intervals}; moreover, it preserves the pairs assigned to
+extension classes in Construction~\ref{con:category}.
+
+The bifunctor $\E$ on $\C(D)$ is biadditive by construction. Each of the
+remaining extriangulated axioms in Nakaoka and Palu \cite[Definition~2.12]{NP}
+involves only finitely many objects of $\C(D)$: the realization of the zero
+class and of direct sums of classes, the lifting of morphisms of extensions to
+morphisms of conflations, the completion of commuting squares between
+conflations, the composition diagram for two conflations, and the dual
+statements. Choose a finite
+nonempty subset $J\subseteq I$ containing all indices $i\in I$ appearing in the
+summands of those objects. Since $J$ has a largest element, $\C_J$ already
+satisfies all of these axioms. By fullness of $\C_J\hookrightarrow\C(D)$ and the
+compatibility of extension groups and assigned pairs, every required diagram
+and commutativity identity holds in $\C(D)$ as well.
+
+For an arbitrary subset $J\subseteq I$, every extension class between objects
+of $\C_J$ has a representative with middle term in $\C_J$, by
+Lemma~\ref{lem:intervals} on the $\B_J$-summands and the split pair on the
+$X$-summands; hence $\C_J$ is extension-closed in $\C(D)$ and inherits the
+structure of Construction~\ref{con:category}. Finally, since $I$ is a set, the
+finite direct sums of $X$, $Y$, and the $A_i,P_i$ ($i\in I$) form a set of
+representatives for the isomorphism classes of objects of $\C(D)$, so $\C(D)$
+is essentially small.
+\end{proof}
+
+\section{Triangulated embeddings and projections from the inverse limit}\label{sec:criterion}
+
+Throughout this section, let $I$ be a nonempty ordinal and let
+$D=(D_i,\pi_{ji})_{i\le j\text{ in }I}$ be an inverse system of $k$-vector
+spaces with surjective transition maps, as in Construction~\ref{con:category}.
+We now prove Theorem~\ref{intro:criterion}, showing that a triangulated
+embedding of $\C(D)$ requires every projection $\varprojlim D\to D_i$ to be
+surjective, and therefore (by Proposition~\ref{prop:complex}) already implies
+the existence of an algebraic realization.
+
+The essential mechanism is to lift a morphism $u:X\to A_i$ to a compatible
+family in $\varprojlim D$ via a single degree $-1$ morphism in the target
+triangulated category. For a single conflation in a triangulated target, the
+existence of such a lift comes from exactness at the negative first connecting
+map of Adachi, Enomoto and Tsukamoto \cite[Definition~2.3 (NE2) and
+Example~2.4]{AET}. Intrinsically,
+Gorsky, Nakaoka and Palu \cite[Definition~5.1(1), Remark~5.2 and
+Definition~5.3]{GNP} describe a negative first extension in
+$\E_{\mathrm I}^{-1}(X,Y)$ as a natural transformation
+$\E(Y,-)\to\C(D)(X,-)$, whose connecting map for a conflation evaluates the
+transformation at its extension class. Their Example~5.25 exhibits a nonzero
+morphism to the first term of a conflation whose composite to the middle term
+vanishes. Under a triangulated embedding $(F,\eta):\C(D)\to\T$, a
+single morphism $v:FX[1]\to FY$ can be composed with $\eta_{Y,A_j}(\varepsilon_j)$
+for every $j\in I$, and by naturality of $\eta$ the resulting morphisms form a
+compatible family.
+
+For each $i\in I$, let $\varepsilon_i\in\E(Y,A_i)$ be the extension class of
+the interval conflation $A_i\xrightarrow{b_i}P_i\xrightarrow{c_i}Y$ in
+\eqref{eq:rows}. For $i\le j$ in $I$, the morphism of short exact sequences
+\eqref{eq:rows} induces an isomorphism from the pushout of the upper row along
+$a_{ji}$ to the lower row fixing $A_i$ and $Y$, and hence
+\begin{equation}\label{eq:push}
+    (a_{ji})_*\varepsilon_j=\varepsilon_i\qquad (i\le j).
+\end{equation}
+
+\begin{theorem}\label{thm:criterion}
+Let $I$ be a nonempty ordinal and let $D=(D_i)_{i\in I}$ be an inverse system
+of $k$-vector spaces on $I$ whose transition maps are surjective. The following
+conditions are equivalent.
+\begin{enumerate}
+\item The category $\C(D)$ admits a triangulated embedding.
+\item For each $i\in I$, the projection $\varprojlim D\to D_i$ is surjective.
+\item The category $\C(D)$ has an algebraic realization.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+$(1)\Rightarrow(2)$:
+Let $(F,\eta):\C(D)\to\T$ be a triangulated embedding. For each $i\in I$, write
+$\delta_i=\eta_{Y,A_i}(\varepsilon_i)$, so that the conflation
+$A_i\xrightarrow{b_i}P_i\xrightarrow{c_i}Y$ maps under $F$ to a distinguished
+triangle
+\[
+  FA_i\xrightarrow{Fb_i}FP_i\xrightarrow{Fc_i}FY\xrightarrow{\delta_i}FA_i[1]
+\]
+in $\T$. For $i\le j$ in $I$, naturality of $\eta$ together with
+\eqref{eq:push} yields the commutative square
+\begin{equation}\label{eq:triangles}
+\begin{tikzcd}[column sep=2.6em]
+ FY\ar[r,"\delta_j"]\ar[d,equal]&FA_j[1]\ar[d,"{(F a_{ji})[1]}"]\\
+ FY\ar[r,"\delta_i"']&FA_i[1].
+\end{tikzcd}
+\end{equation}
+
+Fix $i\in I$ and $u\in D_i=\C(D)(X,A_i)$. Since $\C(D)(X,P_i)=0$, we have
+$b_i u=0$, and therefore $(Fb_i)[1]\circ(Fu)[1]=0$. Applying $\T(FX[1],-)$ to
+the distinguished triangle for $A_i\to P_i\to Y$ gives the exact sequence
+\[
+ \T(FX[1],FY)\xrightarrow{(\delta_i)_*}\T(FX[1],FA_i[1])
+       \xrightarrow{((F b_i)[1])_*}\T(FX[1],FP_i[1]).
+\]
+Hence there exists a morphism $v:FX[1]\to FY$ such that $\delta_i v=(Fu)[1]$.
+
+For each $j\in I$, since $F$ is fully faithful and $[1]$ is an autoequivalence
+of $\T$, there is a unique morphism $u_j:X\to A_j$ in $\C(D)$ satisfying
+$(F u_j)[1]=\delta_j v$. In particular, $(Fu_i)[1]=\delta_i v=(Fu)[1]$, so
+$u_i=u$. For $h\le j$ in $I$, the square \eqref{eq:triangles} (with $h$ in place
+of $i$) yields
+\[
+    (F(a_{jh}u_j))[1]=(F a_{jh})[1]\,(F u_j)[1]
+                     =(F a_{jh})[1]\,\delta_j v
+                     =\delta_h v=(F u_h)[1].
+\]
+Since $F$ is faithful and $[1]$ is an autoequivalence, it follows that
+$\pi_{jh}(u_j)=a_{jh}u_j=u_h$. Thus $(u_j)_{j\in I}$ is an element of
+$\varprojlim D$ with $i$-th component $u$.
+
+\medskip\noindent
+$(2)\Rightarrow(3)$:
+Apply Proposition~\ref{prop:complex} with $J=I$, $W=\varprojlim D$, and $q_i$
+the $i$-th canonical projection $\varprojlim D\to D_i$.
+
+\medskip\noindent
+$(3)\Rightarrow(1)$:
+Every algebraic realization is a triangulated embedding by definition.
+\end{proof}
+
+\section{A counterexample indexed by the countable ordinals}\label{sec:example}
+
+By Theorem~\ref{thm:criterion}, to produce an extriangulated category $\C(D)$
+with no triangulated embedding, it suffices to exhibit an inverse system $D$ of
+$k$-vector spaces with surjective transition maps over a nonempty ordinal $I$
+such that $\varprojlim D=0$ while $D_0\ne 0$. We construct such systems over
+$\omega_1$, the first uncountable ordinal, by linearizing inverse systems of
+nonempty sets with surjective transition maps and empty inverse limit. For a
+set $S$, write $k^{(S)}$ for the free $k$-vector space with basis $S$. Bergman
+\cite[Lemma~3]{Be} establishes the following result for direct sums of copies
+of a fixed module, attributing the case of vector spaces over a field and its
+finite support argument to Higman and Stone \cite[\S3]{HS}.
+
+\begin{lemma}[{\cite[Lemma~3]{Be} with ring and module $k$}]\label{lem:linear}
+Let $(S_i)_{i<\omega_1}$ be an inverse system of nonempty sets with
+surjective transition maps and empty inverse limit. Then the induced
+linear maps between the spaces $k^{(S_i)}$ are surjective and
+$\varprojlim_{i<\omega_1} k^{(S_i)}=0$.
+\end{lemma}
+
+We first record a direct counterexample obtained from injections of countable
+ordinals into $\mathbb N$.
+
+\begin{example}\label{ex:injections}
+We use the inverse system of sets in Bergman \cite[p.~7, Example~1 in
+the proof of Lemma~10]{Be2}, also given in Wofsey's second example
+\cite{Wo}. A related system indexed by the finite subsets of $\mathbb R$ was given earlier
+by Waterhouse \cite{Wa}. For each countable ordinal $i<\omega_1$, set
+\[
+ S_i=\{f:i\hookrightarrow\mathbb N\mid\mathbb N\setminus\im f
+                                    \text{ is infinite}\}.
+\]
+For $i\le j<\omega_1$, let the transition map $S_j\to S_i$ be restriction to
+$i$. To see that it is surjective, let $f\in S_i$ and partition the infinite
+set $\mathbb N\setminus\im f$ into two infinite subsets. Since $j\setminus i$
+is countable, we may extend $f$ to an injection $j\hookrightarrow\mathbb N$
+sending $j\setminus i$ into one of these subsets, leaving the other subset
+outside the image. A compatible family in $\varprojlim S_i$ would have as its
+union an injection $\omega_1\hookrightarrow\mathbb N$, which is impossible, so
+$\varprojlim S_i=\emptyset$. Setting $D'_i=k^{(S_i)}$, Lemma~\ref{lem:linear}
+gives $\varprojlim D'=0$, whereas $S_0$ consists solely of the empty function
+and thus $D'_0=k$. Therefore $\C(D')$ has no triangulated embedding by
+Theorem~\ref{thm:criterion}.
+\end{example}
+
+In Example~\ref{ex:injections}, the morphism space $\C(D')(X,A_\omega)=D'_\omega$
+already has uncountable dimension, since $S_\omega$ contains all bijections
+from $\omega=\mathbb N$ onto the even natural numbers. To obtain morphism
+spaces of at most countable dimension, we replace $S_i$ by countable subsets
+closed under restriction using an Aronszajn tree. Recall that a \emph{tree} is
+a partially ordered set in which the strict predecessors of each node are well
+ordered; its \emph{$i$-th level} consists of the nodes whose set of strict
+predecessors has order type $i$. An \emph{Aronszajn tree} is a tree of height
+$\omega_1$ whose $i$-th level is nonempty and countable for every $i<\omega_1$,
+and which has no chain meeting every level. Aronszajn's construction is
+recorded by Kurepa \cite[Th\'eor\`eme~6, p.~96, footnote~3]{Ku}.
+
+\begin{construction}[{\cite[proof of Theorem~9.16, (9.10), pp.~116--117]{Je}}]\label{con:tree}
+In the Aronszajn tree constructed by Jech \cite[proof of Theorem~9.16,
+pp.~116--117]{Je}, the nodes are bounded strictly increasing sequences of
+rational numbers, ordered by extension, so a node on level $i$ is a function
+with domain $i$. Fixing a bijection $\mathbb Q\to\mathbb N$, since the range of
+each bounded sequence omits infinitely many rationals above its upper bound, we
+may identify the $i$-th level with a countable subset $N_i\subseteq S_i$ of
+Example~\ref{ex:injections}. The level $N_0$ consists solely of the empty
+sequence, and condition~(9.10) of \cite[pp.~116--117]{Je} ensures that every
+node extends to every higher level. For $i\le j<\omega_1$, restriction to $i$
+therefore defines a surjective transition map $N_j\to N_i$ (the identity when
+$i=j$, and sending each node to its predecessor on level $i$ when $i<j$).
+Because a compatible family would be a chain meeting every level, we have
+$\varprojlim N_i=\emptyset$. Following Dimitri\'c \cite[FC2, pp.~20--21]{Di},
+we set $D_i=k^{(N_i)}$, with linear transition maps induced by these
+restrictions $N_j\to N_i$ (sending each basis element to its predecessor for
+$i<j$). By Lemma~\ref{lem:linear}, these
+linear maps are surjective and $\varprojlim D=0$. Moreover, $D_0=k$ and
+$\dim_k D_i=|N_i|\le\aleph_0$ for all $i<\omega_1$.
+\end{construction}
+
+To deduce Theorem~\ref{intro:example}(3) for this tree system, we next
+determine the indecomposable objects and the extension spaces of $\C(D)$ for an
+arbitrary system $D$.
+
+\begin{proposition}\label{prop:size}
+For any inverse system $D=(D_i)_{i\in I}$ as in Construction~\ref{con:category},
+the category $\C(D)$ is idempotent complete and Krull--Schmidt. A complete list
+of pairwise nonisomorphic indecomposables is
+\[
+      X,\quad Y,\quad A_i,\quad P_i\qquad(i\in I).
+\]
+Their endomorphism rings are $k$. For $A,C$ on this list, the only nonzero
+spaces $\E(C,A)$ are
+\begin{equation}\label{eq:extensions}
+   \E(Y,A_i)\simeq k,\qquad \E(P_j,A_i)\simeq k\qquad(j<i).
+\end{equation}
+The category $\C(D)$ has enough injectives, and $\E^n=0$ for all $n\ge 2$.
+\end{proposition}
+\begin{proof}
+We first identify the indecomposables and then compute their extensions using
+the interval resolutions.
+
+\medskip\noindent\textbf{Step 1: Indecomposables and idempotents.}
+By \eqref{eq:hom} and \eqref{eq:X}, each listed object has endomorphism ring
+$k$, and for any two distinct objects on the list at least one of the two
+morphism spaces between them vanishes; hence they are pairwise nonisomorphic
+indecomposables. Since every object of $\C(D)$ is a finite direct sum of these
+objects and their endomorphism rings are local, $\C(D)$ is Krull--Schmidt and,
+by Krause \cite[Corollary~4.4]{Kr}, idempotent complete.
+
+\medskip\noindent\textbf{Step 2: Extensions, injectives, and heredity.}
+Since $\rho X=0$, we have $\E(X,-)=\E(-,X)=0$. By Lemma~\ref{lem:intervals},
+$Y$ and the $P_i$ are injective in $\B_I$, so $\E(-,Y)=\E(-,P_i)=0$ by
+Construction~\ref{con:category}. For $B\in\B_I$, applying $\B_I(B,-)$ to the
+injective resolution $0\to A_i\xrightarrow{b_i}P_i\xrightarrow{c_i}Y\to0$ of
+Lemma~\ref{lem:intervals} yields
+\[
+  \E(B,A_i)=\Ext^1_{\B_I}(B,A_i)\simeq\coker\bigl(\B_I(B,P_i)
+                  \xrightarrow{(c_i)_*}\B_I(B,Y)\bigr).
+\]
+By \eqref{eq:hom}, if $B=A_j$ then $\B_I(A_j,Y)=0$; if $B=Y$ then
+$\B_I(Y,P_i)=0$ and $\B_I(Y,Y)=k$; and if $B=P_j$ then $\B_I(P_j,Y)=kc_j$,
+whereas $(c_i)_*(\B_I(P_j,P_i))$ equals $kc_i p_{ji}=kc_j$ for $i\le j$ and $0$
+for $j<i$. This proves \eqref{eq:extensions}.
+
+In particular, $X$, $Y$, and all $P_i$ are injective in $\C(D)$. Each $A_i$
+occurs as the first term of the conflation $A_i\xrightarrow{b_i}P_i\xrightarrow{c_i}Y$
+with injective middle term, and each injective object $U$ occurs as the first
+term of the split conflation $U\xrightarrow{1_U}U\to0$. Taking finite direct
+sums shows that $\C(D)$ has enough injectives.
+
+Finally, by Gorsky, Nakaoka and Palu \cite[Definition~3.1 and Remark~3.2]{GNP},
+the group $\E^2(C,A)$ is generated by products $\alpha\otimes\beta$ with
+$\alpha\in\E(M,A)$ and $\beta\in\E(C,M)$ for $M\in\C(D)$. Writing
+$M=\bigoplus_{r=1}^t M_r$ as a finite direct sum of indecomposables with
+inclusions $\iota_r:M_r\to M$ and projections $\pi_r:M\to M_r$, we have
+$1_M=\sum_{r=1}^t\iota_r\pi_r$, and therefore
+\[
+  \alpha\otimes\beta
+  =\sum_{r=1}^t (\iota_r)^*\alpha\otimes(\pi_r)_*\beta
+\]
+with $(\iota_r)^*\alpha\in\E(M_r,A)$ and $(\pi_r)_*\beta\in\E(C,M_r)$. By
+\eqref{eq:extensions}, $\E(M_r,A)$ can be nonzero only when $M_r$ is $Y$ or
+some $P_j$, whereas $\E(C,M_r)$ can be nonzero only when $M_r$ is some $A_i$.
+Since these two sets of indecomposables are disjoint, every term vanishes.
+Hence $\E^2=0$, and all higher tensor powers $\E^n$ ($n\ge 2$) vanish as well.
+\end{proof}
+
+We now apply Theorem~\ref{thm:criterion} and Proposition~\ref{prop:size} to the
+inverse system $D$ of Construction~\ref{con:tree}.
+
+\begin{theorem}\label{thm:example}
+Let $k$ be any field and let $D$ be the inverse system of
+Construction~\ref{con:tree}. The essentially small $k$-linear extriangulated
+category $\C(D)$ has the following properties.
+\begin{enumerate}
+\item The category $\C(D)$ has no triangulated embedding.
+\item Every countable family of objects of $\C(D)$ lies in a full
+extension-closed subcategory with an algebraic realization.
+\item The category $\C(D)$ is hereditary and Krull--Schmidt, and has enough
+injectives. It has $\aleph_1$ isomorphism classes of indecomposables, each with
+endomorphism ring $k$. For all indecomposables $A,C$ we have
+$\dim_k\E(C,A)\le1$, and every morphism space has at most countable dimension
+over $k$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+(1) By Construction~\ref{con:tree}, we have $\varprojlim D=0$ and $D_0=k$, so
+the projection $\varprojlim D\to D_0$ is not surjective. Hence $\C(D)$ has no
+triangulated embedding by $(1)\Rightarrow(2)$ of Theorem~\ref{thm:criterion}.
+
+(2) Every object of $\C(D)$ is a finite direct sum of $X$, $Y$, and the
+$A_i,P_i$ ($i<\omega_1$), so only countably many indices $i<\omega_1$ occur in
+a given countable family of objects. Since every countable subset of $\omega_1$
+is bounded in $\omega_1$, these indices all lie in $J=[0,m]$ for some
+$m<\omega_1$. Then $\C_J$ contains the given family, is extension-closed in
+$\C(D)$, and admits an algebraic realization by Corollary~\ref{cor:axioms}
+because $m=\max J$.
+
+(3) By Proposition~\ref{prop:size}, $\C(D)$ is Krull--Schmidt, has enough
+injectives, and is hereditary (since $\E^2=0$). Each indecomposable has
+endomorphism ring $k$, and $\dim_k\E(C,A)\le1$ for all indecomposables $A,C$ by
+\eqref{eq:extensions}. The indecomposables consist of the two families
+$\{A_i\}_{i<\omega_1}$ and $\{P_i\}_{i<\omega_1}$ together with $X$ and $Y$, so
+there are $\aleph_1$ isomorphism classes of indecomposables. By \eqref{eq:hom}
+and \eqref{eq:X}, the only morphism spaces between indecomposables that can
+have dimension greater than $1$ are the spaces $\C(D)(X,A_i)=D_i=k^{(N_i)}$,
+each of which has dimension $|N_i|\le\aleph_0$ by Construction~\ref{con:tree}.
+Taking finite direct sums preserves this bound, so every morphism space in
+$\C(D)$ has at most countable dimension over $k$.
+\end{proof}
+
+In contrast to having enough injectives, the category $\C(D)$ of
+Theorem~\ref{thm:example} does not have enough projectives: in fact, there is
+no conflation ending in $Y$ with projective middle term. Indeed, an object $U$
+is projective precisely when $\E(U,-)=0$ \cite[Proposition~3.24]{NP}. Since
+$\omega_1$ has no largest element, for each $j<\omega_1$ there exists $i>j$
+with $\E(P_j,A_i)\simeq k$, and $\E(Y,A_0)\simeq k$; hence by
+\eqref{eq:extensions}, the only indecomposable projective objects are $X$ and
+the $A_i$. Every morphism from $X$ or $A_i$ to $Y$ is zero, whereas by
+Construction~\ref{con:category} the functor $\rho$ maps the second morphism of
+any conflation ending in $Y$ to an epimorphism onto $Y$. On the other hand,
+because $\C(D)$ has enough injectives, every object admits an inflation into an
+injective object, so $\C(D)$ has enough injective morphisms; by Gorsky, Nakaoka
+and Palu \cite[Corollary~5.22]{GNP}, the contravariant left derived functors of
+$\Hom$ therefore equip $\C(D)$ with one-sided negative extensions
+$\E_{\mathrm{II}}^{-n}$. Thus $\C(D)$ admits these one-sided negative
+extensions even though it has no triangulated embedding; the obstruction in
+Theorem~\ref{thm:criterion} arises from the degree $-1$ morphisms supplied by a
+triangulated target.
+
+Can either the index set or the morphism spaces in Theorem~\ref{thm:example} be
+made smaller? The following proposition shows that neither bound can be
+improved within the family of categories $\C(D)$ of
+Construction~\ref{con:category}.
+
+\begin{proposition}\label{prop:bounds}
+Let $D=(D_i)_{i\in I}$ be an inverse system as in
+Construction~\ref{con:category}. The category $\C(D)$ has an algebraic
+realization under either of the following hypotheses.
+\begin{enumerate}
+\item The ordinal $I$ has a countable cofinal subset.
+\item Every $D_i$ is finite-dimensional.
+\end{enumerate}
+Consequently, if $\C(D)$ has no triangulated embedding, then $I$ has no
+countable cofinal subset and some $D_i$ is infinite-dimensional; in particular,
+$|I|\ge\aleph_1$ and $\dim_k\C(D)(X,A_i)\ge\aleph_0$ for some $i\in I$. For the
+system $D$ of Construction~\ref{con:tree}, we have
+\[
+  |I|=\aleph_1,\qquad \max_{i\in I}\dim_k D_i=\aleph_0 .
+\]
+\end{proposition}
+\begin{proof}
+By Theorem~\ref{thm:criterion}, to show that $\C(D)$ has an algebraic
+realization under (1) or (2), it suffices to extend any given $i\in I$ and
+$u\in D_i$ to a compatible family in $\varprojlim D$.
+
+(1) If $I$ has a largest element $m$, we choose $w\in D_m$ with $\pi_{mi}(w)=u$
+and take $(\pi_{mj}(w))_{j\in I}$. Otherwise, we apply the surjective case of
+the Mittag--Leffler argument via the following recursive lift due to Tukey, as
+recorded by Henkin \cite[p.~224]{Hen}. Since $I$ has a countable cofinal subset
+and no largest element, there exists a strictly increasing cofinal sequence
+$i=i_0<i_1<\dots$ in $I$. Setting $u_{i_0}=u$, we use surjectivity of the
+transition maps to choose recursively $u_{i_{n+1}}\in D_{i_{n+1}}$ with
+$\pi_{i_{n+1},i_n}(u_{i_{n+1}})=u_{i_n}$ for all $n\ge 0$. For an arbitrary
+$j\in I$, choose $n$ with $i_n\ge j$ and define $u_j=\pi_{i_n,j}(u_{i_n})$. If
+$i_m\ge i_n\ge j$, then
+$\pi_{i_m,j}(u_{i_m})=\pi_{i_n,j}\pi_{i_m,i_n}(u_{i_m})=\pi_{i_n,j}(u_{i_n})$,
+so $u_j$ is independent of $n$; choosing $i_n\ge k$ for $j\le k$ similarly
+gives $\pi_{kj}(u_k)=u_j$. Thus $(u_j)_{j\in I}\in\varprojlim D$ extends $u$.
+
+(2) Surjectivity of the projections for finite-dimensional vector spaces over
+an arbitrary field follows from compactness in the coset topology (see Ghandour
+\cite[Example~2.19 and Theorem~2.21(2)]{Gh}); we give a direct proof by
+duality. Because the transition maps $\pi_{ji}:D_j\to D_i$ are surjective, the
+dual maps $\pi_{ji}^*:D_i^*\to D_j^*$ between the dual spaces
+$D_i^*=\Hom_k(D_i,k)$ are injective, so every $D_i^*$ embeds into the direct
+limit $Z=\varinjlim_{j\in I} D_j^*$. Given $u\in D_i$, we extend evaluation at
+$u$ from $D_i^*$ to a linear functional $\varphi\in Z^*$. For each $j\in I$,
+since $D_j$ is finite-dimensional, the restriction $\varphi|_{D_j^*}$ is
+evaluation at a unique vector $u_j\in D_j$, with $u_i=u$. For $h\le j$ in $I$
+and every $\alpha\in D_h^*$, we have
+\[
+  \alpha(\pi_{jh}(u_j))=(\pi_{jh}^*\alpha)(u_j)
+  =\varphi(\pi_{jh}^*\alpha)=\varphi(\alpha)=\alpha(u_h),
+\]
+whence $\pi_{jh}(u_j)=u_h$. Hence $(u_j)_{j\in I}\in\varprojlim D$ extends $u$.
+
+Now suppose that $\C(D)$ has no triangulated embedding. Then it has no
+algebraic realization, so by (1) the ordinal $I$ has no countable cofinal
+subset (in particular, $|I|\ge\aleph_1$), and by (2) some
+$D_i=\C(D)(X,A_i)$ is infinite-dimensional (so $\dim_k\C(D)(X,A_i)\ge\aleph_0$).
+For the system $D$ of Construction~\ref{con:tree}, we have $I=\omega_1$ (hence
+$|I|=\aleph_1$) and $\dim_k D_i\le\aleph_0$ for all $i<\omega_1$; since
+$\C(D)$ has no triangulated embedding by Theorem~\ref{thm:example}(1), some
+$D_i$ is infinite-dimensional, and therefore $\max_{i\in I}\dim_k D_i=\aleph_0$.
+\end{proof}
+
+\begin{thebibliography}{Stacks}
+\bibitem[AET]{AET}
+T. Adachi, H. Enomoto and M. Tsukamoto, \emph{Intervals of $s$-torsion
+pairs in extriangulated categories with negative first extensions},
+Math. Proc. Cambridge Philos. Soc. \textbf{174} (2023), no.~3, 451--469.
+\bibitem[Be]{Be}
+G.~M. Bergman, \emph{Every module is an inverse limit of injectives},
+Proc. Amer. Math. Soc. \textbf{141} (2013), no.~4, 1177--1183.
+\bibitem[Be2]{Be2}
+G.~M. Bergman, \emph{Some empty inverse limits}, July 6, 2011,
+\url{https://math.berkeley.edu/~gbergman/papers/unpub/emptylim.pdf}.
+\bibitem[BS]{BS}
+R. Bennett-Tennenhaus and A. Shah, \emph{Transport of structure in higher
+homological algebra}, J. Algebra \textbf{574} (2021), 514--549.
+\bibitem[BCB]{BCB}
+M.~B. Botnan and W. Crawley-Boevey, \emph{Decomposition of persistence
+modules}, Proc. Amer. Math. Soc. \textbf{148} (2020), 4581--4596.
+\bibitem[Ch]{Ch}
+X. Chen, \emph{Exact dg categories II: The embedding theorem},
+J. Pure Appl. Algebra \textbf{230} (2026), no.~7, article 108298.
+\bibitem[Di]{Di}
+R.~M. Dimitri\'c, \emph{Trees, inverse systems, and valuated vector
+spaces}, Acta Math. Univ. Ostrav. \textbf{12} (2004), no.~1, 19--22.
+\bibitem[Gh]{Gh}
+N.~J. Ghandour, \emph{A note on the inverse limits of linear algebraic
+groups}, Int. J. Algebra \textbf{5} (2011), no.~19, 925--933.
+\bibitem[GNP]{GNP}
+M. Gorsky, H. Nakaoka and Y. Palu, \emph{Positive and negative extensions
+in extriangulated categories}, Math. Z. \textbf{313} (2026), article 89.
+\bibitem[GNP2]{GNP2}
+M. Gorsky, H. Nakaoka and Y. Palu, \emph{Hereditary extriangulated
+categories: Silting objects, mutation, negative extensions},
+\href{https://arxiv.org/abs/2303.07134v2}{arXiv:2303.07134v2} (2023).
+\bibitem[Hen]{Hen}
+L. Henkin, \emph{A problem on inverse mapping systems},
+Proc. Amer. Math. Soc. \textbf{1} (1950), 224--225.
+\bibitem[HeS]{HeS}
+E. Herscovich and A. Solotar, \emph{Derived invariance of
+Hochschild--Mitchell (co)homology and one-point extensions},
+J. Algebra \textbf{315} (2007), no.~2, 852--873.
+\bibitem[HS]{HS}
+G. Higman and A.~H. Stone, \emph{On inverse systems with trivial limits},
+J. London Math. Soc. (1) \textbf{29} (1954), no.~2, 233--236.
+\bibitem[Je]{Je}
+T. Jech, \emph{Set Theory}, third millennium edition, revised and expanded,
+Springer Monographs in Mathematics, Springer-Verlag, Berlin, 2003.
+\bibitem[Ke]{Ke}
+B. Keller, \emph{Calabi--Yau triangulated categories},
+in \emph{Trends in representation theory of algebras and related topics},
+EMS Ser. Congr. Rep., Eur. Math. Soc., Z\"urich, 2008, 467--489.
+\bibitem[Kl]{Kl}
+J. Klemenc, \emph{The stable hull of an exact $\infty$-category},
+Homology Homotopy Appl. \textbf{24} (2022), no.~2, 195--220.
+\bibitem[Kr]{Kr}
+H. Krause, \emph{Krull--Schmidt categories and projective covers},
+Expo. Math. \textbf{33} (2015), no.~4, 535--549.
+\bibitem[Ku]{Ku}
+G. Kurepa, \emph{Ensembles ordonn\'es et ramifi\'es},
+doctoral thesis, Universit\'e de Paris, 1935.
+\bibitem[NP]{NP}
+H. Nakaoka and Y. Palu, \emph{Extriangulated categories, Hovey twin cotorsion
+pairs and model structures}, Cah. Topol. G\'eom. Diff\'er. Cat\'eg.
+\textbf{60} (2019), no.~2, 117--193.
+\bibitem[NP2]{NP2}
+H. Nakaoka and Y. Palu, \emph{External triangulation of the homotopy
+category of exact quasi-category},
+\href{https://arxiv.org/abs/2004.02479v1}{arXiv:2004.02479v1} (2020).
+\bibitem[Stacks]{Stacks}
+The Stacks Project Authors, \emph{The Stacks Project},
+\href{https://stacks.math.columbia.edu/tag/05TG}{Tag 05TG}.
+\bibitem[Wa]{Wa}
+W.~C. Waterhouse, \emph{An empty inverse limit},
+Proc. Amer. Math. Soc. \textbf{36} (1972), 618.
+\bibitem[Wo]{Wo}
+E. Wofsey, \href{https://math.stackexchange.com/a/3303841}{Mathematics
+Stack Exchange, answer 3303841}, July 25, 2019, revised July 27, 2019.
+\end{thebibliography}
+\end{document}

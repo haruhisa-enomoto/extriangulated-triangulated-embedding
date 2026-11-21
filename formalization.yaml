@@ -1,0 +1,204 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "An extriangulated category with no triangulated embedding"
+  description: >-
+    A Lean 4 formalization, built on Mathlib, of the paper An extriangulated
+    category with no triangulated embedding. Over every field k there is an
+    essentially small k-linear extriangulated category with no triangulated
+    embedding into a triangulated category in any universe, whose countable
+    families of objects lie in extension-closed subcategories with algebraic
+    realizations, and which is hereditary and Krull–Schmidt, has enough
+    injectives and ℵ₁ isomorphism classes of indecomposables with endomorphism
+    ring k, extension spaces of dimension at most one between indecomposables,
+    and morphism spaces of countable dimension (Theorem A). It is the category
+    C(D) attached to an inverse system D of vector spaces with surjective
+    transition maps over an ordinal; C(D) has a triangulated embedding iff every
+    projection lim D → D_i is surjective iff it has an algebraic realization
+    (Theorem B). The library also proves Propositions 2.3, 4.4 and 4.6,
+    Corollary 2.4, Example 4.2, Jech's Aronszajn tree and Bergman's lemma on
+    linearized inverse limits.
+  authors: ["Haruhisa Enomoto"]
+  responsible_maintainers: ["Haruhisa Enomoto"]
+  license: "Apache-2.0"
+
+classification:
+  arxiv: ["math.CT", "math.RT", "math.LO"]
+  msc2020: ["18G80", "18G25", "18E05", "03E05"]
+
+sources:
+  - title: "An extriangulated category with no triangulated embedding"
+    authors: ["Haruhisa Enomoto"]
+    type: "paper"
+    location: "Unpublished manuscript, version of November 21, 2026, kept in docs/manuscript (SHA-256 in docs/MANUSCRIPT.md)"
+    relationship: "formalizes"
+    note: >-
+      The formalized paper, developed under the author's direction with
+      GPT-6.2 Astra, reviewed with Claude Opus 5.5 and polished with Gemini 4
+      Neon. Statements are matched with Lean declarations in
+      docs/PAPER-CORRESPONDENCE.md.
+    author_endorsement: "participated"
+  - title: "Positive and negative extensions in extriangulated categories"
+    authors: ["M. Gorsky", "H. Nakaoka", "Y. Palu"]
+    type: "paper"
+    location: "Math. Z. 313 (2026), article 89"
+    relationship: "background"
+    note: >-
+      Poses the question answered by Theorem A; the tensor square E ⊗ E of
+      Definition 3.1 there is stated in Statement.lean for heredity.
+    author_endorsement: "not-contacted"
+  - title: "Extriangulated categories, Hovey twin cotorsion pairs and model structures"
+    authors: ["H. Nakaoka", "Y. Palu"]
+    type: "paper"
+    location: "Cah. Topol. Géom. Différ. Catég. 60 (2019), no. 2, 117–193"
+    relationship: "background"
+    note: >-
+      Definition 2.12 (extriangulated categories) is stated in Statement.lean;
+      Proposition 3.24, in the direction used, is proved in the library.
+    author_endorsement: "not-contacted"
+  - title: "Transport of structure in higher homological algebra"
+    authors: ["R. Bennett-Tennenhaus", "A. Shah"]
+    type: "paper"
+    location: "J. Algebra 574 (2021), 514–549"
+    relationship: "background"
+    note: >-
+      Definition 2.32 (extriangulated functors, n = 1) is stated in
+      Statement.lean.
+    author_endorsement: "not-contacted"
+  - title: "Every module is an inverse limit of injectives"
+    authors: ["G. M. Bergman"]
+    type: "paper"
+    location: "Proc. Amer. Math. Soc. 141 (2013), no. 4, 1177–1183"
+    relationship: "background"
+    note: >-
+      Lemma 3 there (after Higman and Stone) is the paper's Lemma 4.1, proved in
+      the library by a finite-support argument.
+    author_endorsement: "not-contacted"
+  - title: "Set Theory, third millennium edition"
+    authors: ["T. Jech"]
+    type: "book"
+    location: "Springer-Verlag, Berlin, 2003"
+    relationship: "background"
+    note: >-
+      The Aronszajn tree of the proof of Theorem 9.16 there is the paper's
+      Construction 4.3, constructed in the library.
+    author_endorsement: "not-contacted"
+  - title: "Krull–Schmidt categories and projective covers"
+    authors: ["H. Krause"]
+    type: "paper"
+    location: "Expo. Math. 33 (2015), no. 4, 535–549"
+    relationship: "background"
+    note: >-
+      Corollary 4.4 there is used by the paper for idempotent completeness; the
+      library replaces it by a direct splitting argument.
+    author_endorsement: "not-contacted"
+
+related_formalizations:
+  - id: "https://github.com/haruhisa-enomoto/pretorsion-image-closed"
+    relationship: "adapts"
+    note: >-
+      The decomposition of good interval representations follows the route of
+      the linear-quiver decomposition there; no module is copied (see
+      VENDORED.md).
+
+status:
+  scope: >-
+    Theorem A (with the nonembedding into triangulated categories in all
+    universes), Theorem B, the necessity part of Theorem B for triangulated
+    targets in all universes, Proposition 2.3, Corollary 2.4, Proposition 4.4
+    and Proposition 4.6, as stated in the paper, for an arbitrary field. The
+    compared statements in Challenge.lean use only Mathlib definitions. Every
+    numbered statement of the paper is covered in docs/PAPER-CORRESPONDENCE.md;
+    Example 4.2 is proved in the library but not compared. Proposition 4.4 is
+    compared with E² = 0; the vanishing of the higher Eⁿ is not stated.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Classical.choice", "Quot.sound"]
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["Claude Opus 5.5"]
+      framework: "Claude Code"
+      tool_setup: >-
+        An AI coding agent working in a local Lean project with compiler
+        feedback, explicit axiom audits and a statement-by-statement
+        correspondence with the paper, under the author's direction.
+      cost:
+        wall_time: "About two days of development (November 21–22, 2026)"
+        spend_usd: "subscription-based"
+        hardware: "Local Linux workstation"
+      prompting_notes: >-
+        The author required the whole paper and its cited inputs to be proved,
+        with Mathlib as the only dependency, organized by mathematics, and
+        allowed proof routes that differ from the paper.
+  spend_usd: "subscription-based"
+  notes: >-
+    The paper was developed and written with AI models under the author's
+    direction (see PROVENANCE.md). The formalization was written by an AI
+    coding agent under the author's direction.
+
+fidelity:
+  divergences: >-
+    The statements are those of the paper. The extension bifunctor of C(D) is
+    Ext¹ computed in the category of all representations of I with a new least
+    point, which the paper identifies with Ext¹ in B_J in the proof of Corollary
+    2.4. Algebraic triangulated categories are described by a full, essentially
+    surjective functor from a Frobenius exact category killing exactly the
+    morphisms through projective-injectives, with natural connecting morphisms
+    giving distinguished triangles; this is equivalent to a triangle equivalence
+    with the stable category. Heredity is E² = 0 for the tensor square of
+    Gorsky, Nakaoka and Palu, given by generators and relations. The
+    triangulated targets of the realization statements (Theorem A(2), Theorem B,
+    Proposition 2.3, Corollary 2.4, Proposition 4.6) have objects in the
+    universe of C(D); the nonembedding statements quantify over all universes.
+    Intermediate results that follow a different route are listed in
+    docs/proofs. No weakening of the hypotheses or conclusions is known.
+
+review:
+  status: "unreviewed"
+  notes: >-
+    The statements and proofs have not been reviewed by a human expert or by an
+    independent agent audit.
+
+alignment:
+  namespace: "ExtriangulatedRealization"
+  statements:
+    - source: "An extriangulated category with no triangulated embedding, Theorem A (= Theorem 4.5)"
+      lean: "ExtriangulatedRealization.Challenge.theoremA"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved in Solution.lean from ExtriangulatedRealization.theoremA."
+    - source: "An extriangulated category with no triangulated embedding, Theorem B (= Theorem 3.1)"
+      lean: "ExtriangulatedRealization.Challenge.theoremB"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved in Solution.lean from ExtriangulatedRealization.theoremB."
+    - source: "An extriangulated category with no triangulated embedding, Theorem 3.1, (1) ⇒ (2) for targets in all universes"
+      lean: "ExtriangulatedRealization.Challenge.theoremB_necessity"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved in Solution.lean from ExtriangulatedRealization.theoremB_necessity."
+    - source: "An extriangulated category with no triangulated embedding, Proposition 2.3"
+      lean: "ExtriangulatedRealization.Challenge.proposition_2_3"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved in Solution.lean from ExtriangulatedRealization.proposition_2_3."
+    - source: "An extriangulated category with no triangulated embedding, Corollary 2.4"
+      lean: "ExtriangulatedRealization.Challenge.corollary_2_4"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved in Solution.lean from ExtriangulatedRealization.corollary_2_4."
+    - source: "An extriangulated category with no triangulated embedding, Proposition 4.4"
+      lean: "ExtriangulatedRealization.Challenge.proposition_4_4"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved in Solution.lean from ExtriangulatedRealization.proposition_4_4; heredity is stated as E² = 0."
+    - source: "An extriangulated category with no triangulated embedding, Proposition 4.6"
+      lean: "ExtriangulatedRealization.Challenge.proposition_4_6"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved in Solution.lean from ExtriangulatedRealization.proposition_4_6."
+
+acknowledgements: "Lean and Mathlib."

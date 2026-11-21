@@ -1,0 +1,237 @@
+{
+  "description": "Origin of every Lean module of the library.",
+  "modules": [
+    {
+      "module": "ExtriangulatedRealization.CD.Closure",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.CD.Counting",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.CD.Existence",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.CD.Extensions",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.CD.Heredity",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.CD.Idempotents",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.CD.Indecomposables",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.CD.Injectives",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.CD.Parts",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.CD.Singles",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.CD.Structure",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.CD.Subcategory",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Categories.Biproduct",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Categories.Idempotents",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Categories.Indecomposable",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Categories.MapBijective",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Categories.Mat",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Categories.OnePointLift",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Complexes.DegreewiseSplit",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Complexes.Frobenius",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Criterion.Bounds",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Criterion.Necessity",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Criterion.TheoremA",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Criterion.TheoremB",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Extriangulated.Injectives",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Intervals.Decomposition",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Intervals.Endomorphisms",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Intervals.Exact",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Intervals.Ext",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Intervals.Good",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Intervals.Homs",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Intervals.Injective",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Intervals.Maps",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Intervals.Peeling",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.InverseSystems.Aronszajn",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.InverseSystems.Injections",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.InverseSystems.Linearization",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.InverseSystems.Omega1",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.MainTheorems",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Realization.Comparison",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Realization.Complexes",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Realization.Extensions",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Realization.Extriangulated",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Realization.FullyFaithful",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Realization.Functor",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Realization.Functors",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Realization.Model",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Realization.Proposition",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Realization.QCategory",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Realization.Realizations",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Realization.Shadow",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Realization.ShadowHom",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Realization.Transfer",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Realization.Triangles",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Realization.XPart",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Statement",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Triangulated.Biproduct",
+      "origin": "original"
+    },
+    {
+      "module": "ExtriangulatedRealization.Triangulated.Reflect",
+      "origin": "original"
+    }
+  ]
+}
