@@ -27,6 +27,9 @@ variable {k : Type u} [Field k] {I : Type u} [LinearOrder I] {D : Iᵒᵖ ⥤ Mo
 /-- The object `Y` of the interval category. -/
 abbrev IntervalCat.objY : IntervalCat k I := IntervalLabel.Y
 
+/-- The object `A i` of the interval category. -/
+abbrev IntervalCat.objA (i : I) : IntervalCat k I := IntervalLabel.A i
+
 /-- The object `P i` of the interval category. -/
 abbrev IntervalCat.objP (i : I) : IntervalCat k I := IntervalLabel.P i
 

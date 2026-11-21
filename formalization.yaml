@@ -45,8 +45,8 @@ sources:
     location: "Math. Z. 313 (2026), article 89"
     relationship: "background"
     note: >-
-      Poses the question answered by Theorem A; the tensor square E ⊗ E of
-      Definition 3.1 there is stated in Statement.lean for heredity.
+      Poses the question answered by Theorem A; the tensor powers Eⁿ of
+      Definition 3.1 there are stated in Statement.lean for heredity.
     author_endorsement: "not-contacted"
   - title: "Extriangulated categories, Hovey twin cotorsion pairs and model structures"
     authors: ["H. Nakaoka", "Y. Palu"]
@@ -111,7 +111,9 @@ status:
     compared statements in Challenge.lean use only Mathlib definitions. Every
     numbered statement of the paper is covered in docs/PAPER-CORRESPONDENCE.md;
     Example 4.2 is proved in the library but not compared. Proposition 4.4 is
-    compared with E² = 0; the vanishing of the higher Eⁿ is not stated.
+    compared with Eⁿ = 0 for every n ≥ 2, and Proposition 2.3 and Corollary 2.4
+    with the statement that each C_J, with the induced structure, is
+    extriangulated.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms: ["propext", "Classical.choice", "Quot.sound"]
@@ -148,8 +150,12 @@ fidelity:
     surjective functor from a Frobenius exact category killing exactly the
     morphisms through projective-injectives, with natural connecting morphisms
     giving distinguished triangles; this is equivalent to a triangle equivalence
-    with the stable category. Heredity is E² = 0 for the tensor square of
-    Gorsky, Nakaoka and Palu, given by generators and relations. The
+    with the stable category; this equivalence is argued in docs/proofs and not
+    formalized. Heredity is Eⁿ = 0 for every n ≥ 2, for the tensor powers of
+    Gorsky, Nakaoka and Palu, given by generators and relations. The realization
+    of Proposition 2.3 takes values in the homotopy category of all complexes
+    over the additive category Q, not in its bounded subcategory; the compared
+    statement asserts the existence of an algebraic realization. The
     triangulated targets of the realization statements (Theorem A(2), Theorem B,
     Proposition 2.3, Corollary 2.4, Proposition 4.6) have objects in the
     universe of C(D); the nonembedding statements quantify over all universes.
@@ -159,8 +165,11 @@ fidelity:
 review:
   status: "unreviewed"
   notes: >-
-    The statements and proofs have not been reviewed by a human expert or by an
-    independent agent audit.
+    The statements and proofs have not been reviewed by a human expert. An
+    independent agent audit (Codex, November 22, 2026) confirmed the main
+    results; its findings on the Challenge length and on the statements of
+    Propositions 2.3 and 4.4 are fixed in this version, and its two encoding
+    remarks are recorded under fidelity.
 
 alignment:
   namespace: "ExtriangulatedRealization"
@@ -194,7 +203,7 @@ alignment:
       lean: "ExtriangulatedRealization.Challenge.proposition_4_4"
       module: "Challenge"
       status: "proved"
-      note: "Proved in Solution.lean from ExtriangulatedRealization.proposition_4_4; heredity is stated as E² = 0."
+      note: "Proved in Solution.lean from ExtriangulatedRealization.proposition_4_4."
     - source: "An extriangulated category with no triangulated embedding, Proposition 4.6"
       lean: "ExtriangulatedRealization.Challenge.proposition_4_6"
       module: "Challenge"

@@ -11,15 +11,18 @@ the declarations. Records are in [`verification/`](../verification/README.md).
 extriangulated data and the axioms of Nakaoka and Palu; extriangulated functors;
 triangulated embeddings and realizations; exact and Frobenius structures and
 algebraic triangulated categories; injective objects, enough injectives and the
-tensor square of Gorsky, Nakaoka and Palu; Krull–Schmidt categories and
+tensor powers of Gorsky, Nakaoka and Palu; Krull–Schmidt categories and
 indecomposables; the category `C(D)` and its subcategories `C_J`. `Challenge.lean` is
-generated from it with seven deliberate `sorry` placeholders. `Solution.lean` proves
+generated from it with seven deliberate `sorry` placeholders, without blank lines (one is
+kept before each section header) to stay within Palomar's limit of 1,000 lines. `Solution.lean` proves
 them and does not import the Challenge.
 
 ## Results
 
-The [record of November 22, 2026](../verification/2026-11-22/README.md) gives the local
-results and the hashes. No hosted Palomar preflight has run yet.
+The [record of November 22, 2026, after the audit fixes](../verification/2026-11-22-audit-fixes/README.md)
+gives the current local results and the hashes; the
+[first record](../verification/2026-11-22/README.md) is for the first release. No hosted
+Palomar preflight has run yet.
 
 No human expert has reviewed the Lean statements or the proofs. Lean checks the
 proofs; whether `Challenge.lean` says what the paper says is a human judgement.

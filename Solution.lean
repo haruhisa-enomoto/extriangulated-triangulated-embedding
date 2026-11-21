@@ -25,20 +25,21 @@ theorem ExtriangulatedRealization.Challenge.theoremB_necessity :
     ExtriangulatedRealization.Statement.TheoremB_necessity.{u, v', u'} :=
   ExtriangulatedRealization.theoremB_necessity
 
-/-- **Proposition 2.3.** Compatible surjections from one vector space give an algebraic
-realization of `C_J`. -/
+/-- **Proposition 2.3.** Compatible surjections from one vector space make `C_J`, with the
+induced structure, an extriangulated category with an algebraic realization. -/
 theorem ExtriangulatedRealization.Challenge.proposition_2_3 :
     ExtriangulatedRealization.Statement.Proposition_2_3.{u} :=
   ExtriangulatedRealization.proposition_2_3
 
 /-- **Corollary 2.4.** `C(D)` is an essentially small extriangulated category; each `C_J` is
-extension-closed; `C_J` is algebraically realized when `J` has a largest element. -/
+extension-closed and extriangulated; `C_J` is algebraically realized when `J` has a largest
+element. -/
 theorem ExtriangulatedRealization.Challenge.corollary_2_4 :
     ExtriangulatedRealization.Statement.Corollary_2_4.{u} :=
   ExtriangulatedRealization.corollary_2_4
 
 /-- **Proposition 4.4.** Krull–Schmidt, indecomposables, extension spaces, enough injectives
-and heredity of `C(D)`. -/
+and heredity (`Eⁿ = 0` for `n ≥ 2`) of `C(D)`. -/
 theorem ExtriangulatedRealization.Challenge.proposition_4_4 :
     ExtriangulatedRealization.Statement.Proposition_4_4.{u} :=
   ExtriangulatedRealization.proposition_4_4

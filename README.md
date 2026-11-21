@@ -21,7 +21,7 @@ extriangulated category `C` such that
 1. `C` has no triangulated embedding (into a triangulated category in any universe);
 2. every countable family of objects of `C` lies in a full extension-closed
    subcategory that has an algebraic realization;
-3. `C` is hereditary (`E² = 0`) and Krull–Schmidt, has enough injectives and `ℵ₁`
+3. `C` is hereditary (`Eⁿ = 0` for `n ≥ 2`) and Krull–Schmidt, has enough injectives and `ℵ₁`
    isomorphism classes of indecomposables, each with endomorphism ring `k`;
    `dim E(C, A) ≤ 1` for indecomposables `A`, `C`; and every morphism space has at most
    countable dimension.
@@ -40,7 +40,8 @@ morphism spaces have countable dimension, and the tree has no branch, so
 `lim D = 0` (Lemma 4.1, after Bergman and Higman–Stone) while `D_0 = k`.
 
 The library also proves Proposition 2.3 (compatible surjections from one vector space
-give an algebraic realization of `C_J`), Corollary 2.4 (`C(D)` is extriangulated),
+make `C_J` an extriangulated category with an algebraic realization), Corollary 2.4
+(`C(D)` is extriangulated, and so is every `C_J`),
 Proposition 4.4 (the structure of `C(D)`), Proposition 4.6 (realizations for a
 countable cofinal subset or finite-dimensional `D_i`) and Example 4.2 (injections of
 countable ordinals into `ℕ`).
@@ -56,7 +57,9 @@ the library. The statement file defines, with Mathlib only: extriangulated data 
 axioms of Nakaoka and Palu; extriangulated functors (Bennett-Tennenhaus and Shah);
 triangulated embeddings and realizations; exact and Frobenius structures and algebraic
 triangulated categories; the category `C(D)` and its subcategories `C_J`; and the
-tensor square `E ⊗ E` of Gorsky, Nakaoka and Palu for heredity.
+tensor powers `Eⁿ` of Gorsky, Nakaoka and Palu for heredity. `Challenge.lean` is
+`Statement.lean` without blank lines (one is kept before each section header), to stay
+within Palomar's limit of 1,000 lines; it has 910 lines.
 
 ## Axioms
 
@@ -69,14 +72,21 @@ The cited inputs that the proofs use are proved: Nakaoka–Palu Proposition 3.24
 direction used), the algebraicity of homotopy categories of additive categories
 (Happel, Keller), Bergman's Lemma 3 (by a direct finite-support proof), Jech's
 Aronszajn tree, and Henkin's (Tukey's) lifting along a countable cofinal sequence.
-Krause's Corollary 4.4 is replaced by a direct splitting argument. The Stacks Project
+Krause's Corollary 4.4 is replaced by a direct splitting argument. Two points are
+recorded as divergences rather than formalized: the realization of Proposition 2.3 lands
+in the homotopy category of all complexes instead of bounded ones, and the comparison of
+our definition of algebraic triangulated categories with Happel's is argued in
+[docs/proofs](docs/proofs/README.md). The Stacks Project
 Tag 05TG is in Mathlib. The [correspondence](docs/PAPER-CORRESPONDENCE.md) lists the
 declarations.
 
 ## Review
 
-No human expert has reviewed the Lean statements or the proofs, and no independent
-agent audit has run. Lean checks the proofs; whether `Challenge.lean` says what the
+No human expert has reviewed the Lean statements or the proofs. An independent agent
+audit (Codex, November 22, 2026) confirmed the main results and found that the Challenge
+exceeded Palomar's line limit, that Propositions 2.3 and 4.4 were stated more weakly than
+in the paper, and two encoding differences; the first three are fixed in this version
+and the last two are recorded as divergences. Lean checks the proofs; whether `Challenge.lean` says what the
 paper says is a human judgement.
 
 ## Start reading

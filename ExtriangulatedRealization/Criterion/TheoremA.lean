@@ -3,6 +3,7 @@ module
 public import ExtriangulatedRealization.CD.Counting
 public import ExtriangulatedRealization.CD.Structure
 public import ExtriangulatedRealization.Criterion.TheoremB
+public import ExtriangulatedRealization.Realization.Subcategory
 public import ExtriangulatedRealization.InverseSystems.Aronszajn
 public import ExtriangulatedRealization.InverseSystems.Linearization
 
@@ -63,7 +64,7 @@ theorem theoremA : TheoremA.{u, v', u'} := by
   · intro S hS
     obtain ⟨m, hm⟩ := exists_labelsIn_Iic_of_countable D
       (fun _ hT => Omega1.bddAbove_of_countable hT) hS
-    obtain ⟨hclosed, hext, hreal⟩ := (corollary_2_4 k _ D hD).2.2 (Set.Iic m)
+    obtain ⟨hclosed, hext, -, hreal⟩ := (corollary_2_4 k _ D hD).2.2 (Set.Iic m)
     refine ⟨subcatJ D (Set.Iic m), hclosed, fun X hX => ?_, hext,
       hreal ⟨m, Set.mem_Iic.mpr le_rfl, fun _ hi => hi⟩⟩
     rw [subcatJ_eq_labelsIn]

@@ -43,9 +43,14 @@ lemma extriangulatedFunctor_isTriangulatedRealization :
 
 end RealizationData
 
-/-- **Proposition 2.3.** -/
-theorem proposition_2_3 : Proposition_2_3.{u} := by
-  intro k _ I _ _ _ D _ J W q hsurj hcomm
+/-- **Proposition 2.3**, the realization: compatible surjections `W → D_i`, `i ∈ J`, give an
+algebraic realization of `C_J`. -/
+theorem hasAlgebraicRealization_subcatJ {k : Type u} [Field k] {I : Type u} [LinearOrder I]
+    [WellFoundedLT I] [Nonempty I] (D : Iᵒᵖ ⥤ ModuleCat.{u} k) (J : Set I) (W : ModuleCat.{u} k)
+    (q : ∀ i ∈ J, W ⟶ D.obj (op i)) (hsurj : ∀ i (hi : i ∈ J), Function.Surjective (q i hi).hom)
+    (hcomm : ∀ (i j : I) (hi : i ∈ J) (hj : j ∈ J) (h : i ≤ j),
+      q j hj ≫ D.map (homOfLE h).op = q i hi) :
+    ((cdData D).restrict (subcatJ D J)).HasAlgebraicRealization.{_, _, _, _, u, max 1 u} := by
   let R : RealizationData D J := ⟨W, q⟩
   have hR : R.IsCompatible := ⟨hsurj, hcomm⟩
   rw [subcatJ_eq_labelsIn]

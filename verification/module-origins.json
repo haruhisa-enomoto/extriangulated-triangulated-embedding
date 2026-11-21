@@ -210,6 +210,10 @@
       "origin": "original"
     },
     {
+      "module": "ExtriangulatedRealization.Realization.Subcategory",
+      "origin": "original"
+    },
+    {
       "module": "ExtriangulatedRealization.Realization.Transfer",
       "origin": "original"
     },

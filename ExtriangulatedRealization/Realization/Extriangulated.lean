@@ -138,13 +138,4 @@ instance subcatJ_isClosedUnderIsomorphisms (J : Set I) :
   unfold subcatJ
   infer_instance
 
-/-- **Corollary 2.4.** -/
-theorem corollary_2_4 : Corollary_2_4.{u} := by
-  intro k _ I _ _ _ D hD
-  refine ⟨cdData_isExtriangulated D hD, essentiallySmall_CD D,
-    fun J => ⟨inferInstance, subcatJ_isExtensionClosed D J, ?_⟩⟩
-  rintro ⟨m, -, hm⟩
-  exact proposition_2_3 k I D hD J (D.obj (op m)) (fun i hi => D.map (homOfLE (hm i hi)).op)
-    (fun i hi => hD (hm i hi)) (fun i j hi hj h => by rw [← D.map_comp]; rfl)
-
 end ExtriangulatedRealization

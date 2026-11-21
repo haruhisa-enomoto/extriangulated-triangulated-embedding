@@ -153,9 +153,9 @@ variable [WellFoundedLT I] [Nonempty I]
 /-- **Proposition 4.6.** -/
 theorem proposition_4_6 : Proposition_4_6.{u} := by
   intro k _ I _ _ _ D hD
-  exact ⟨fun ⟨S, hS, hcof⟩ => hasAlgebraicRealization_of_projectionsSurjective D hD
+  exact ⟨fun ⟨S, hS, hcof⟩ => hasAlgebraicRealization_of_projectionsSurjective D
       (projectionsSurjective_of_countable_cofinal D hD S hS hcof),
-    fun hfin => hasAlgebraicRealization_of_projectionsSurjective D hD
+    fun hfin => hasAlgebraicRealization_of_projectionsSurjective D
       (projectionsSurjective_of_finiteDimensional D hD hfin)⟩
 
 end ExtriangulatedRealization

@@ -79,12 +79,12 @@ lemma hasAlgebraicRealization_of_restrict_top {C : Type*} [Category C] [Preaddit
 variable [WellFoundedLT I] [Nonempty I]
 
 /-- **Theorem B, (2) ⇒ (3).** -/
-lemma hasAlgebraicRealization_of_projectionsSurjective (hD : HasSurjectiveTransitions D)
+lemma hasAlgebraicRealization_of_projectionsSurjective
     (hP : ProjectionsSurjective D) :
     (cdData D).HasAlgebraicRealization.{_, _, _, _, u, max 1 u} := by
   apply hasAlgebraicRealization_of_restrict_top
   rw [← subcatJ_univ]
-  refine proposition_2_3 k I D hD Set.univ (ModuleCat.of k (compatibleFamilies D))
+  refine hasAlgebraicRealization_subcatJ D Set.univ (ModuleCat.of k (compatibleFamilies D))
     (fun i _ => limProj D i) (fun i _ x => ?_) (fun i j _ _ h => ?_)
   · obtain ⟨y, hy, hyi⟩ := hP i x
     exact ⟨⟨y, (mem_compatibleFamilies_iff D y).mpr fun h => hy h⟩, hyi⟩
@@ -96,7 +96,7 @@ theorem theoremB : TheoremB.{u} := by
   intro k _ I _ _ _ D hD
   have h₂₃ : ProjectionsSurjective D →
       (cdData D).HasAlgebraicRealization.{_, _, _, _, u, max 1 u} :=
-    hasAlgebraicRealization_of_projectionsSurjective D hD
+    hasAlgebraicRealization_of_projectionsSurjective D
   have h₃₁ : (cdData D).HasAlgebraicRealization.{_, _, _, _, u, max 1 u} →
       (cdData D).HasTriangulatedEmbedding.{_, _, _, _, u, max 1 u} := by
     rintro ⟨T, i₁, i₂, i₃, i₄, i₅, i₆, i₇, -, Φ, hΦ, -⟩

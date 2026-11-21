@@ -24,6 +24,8 @@ copy of this file. -/
 #print axioms ExtriangulatedRealization.rank_ext_single
 #print axioms ExtriangulatedRealization.cd_hasEnoughInjectives
 #print axioms ExtriangulatedRealization.cdData_isHereditary
+#print axioms ExtriangulatedRealization.subcatJ_isExtriangulatedSubcategory
+#print axioms ExtriangulatedRealization.cd_realizes_transport
 #print axioms ExtriangulatedRealization.linearize_compatible_eq_zero
 #print axioms ExtriangulatedRealization.Aronszajn.good
 #print axioms ExtriangulatedRealization.Aronszajn.system_no_branch

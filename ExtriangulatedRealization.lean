@@ -58,3 +58,4 @@ public import ExtriangulatedRealization.CD.Counting
 public import ExtriangulatedRealization.Criterion.TheoremA
 public import ExtriangulatedRealization.InverseSystems.Injections
 public import ExtriangulatedRealization.MainTheorems
+public import ExtriangulatedRealization.Realization.Subcategory

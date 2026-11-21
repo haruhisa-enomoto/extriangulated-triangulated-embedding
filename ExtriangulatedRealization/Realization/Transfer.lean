@@ -100,6 +100,25 @@ lemma realizes_morphism {δ : (dataJ (D := D) (J := J)).Ext C A}
     erw [Functor.map_preimage]
     exact hb₂
 
+/-- Realizations are invariant under isomorphisms of the end terms. -/
+lemma realizes_transport {δ : (dataJ (D := D) (J := J)).Ext C A} {x : A ⟶ B} {y : B ⟶ C}
+    (h : (dataJ (D := D) (J := J)).Realizes δ x y) (a : A' ≅ A) (c : C' ≅ C) :
+    (dataJ (D := D) (J := J)).Realizes
+      ((dataJ (D := D) (J := J)).pull c.hom ((dataJ (D := D) (J := J)).push a.inv δ))
+      (a.hom ≫ x) (y ≫ c.inv) := by
+  apply R.realizes_of_distinguished hR
+  refine isomorphic_distinguished _ (R.realTriangle_distinguished hR h) _
+    (Triangle.isoMk _ _ ((R.realP hR).mapIso a) (Iso.refl _) ((R.realP hR).mapIso c) ?_ ?_ ?_)
+  · change (R.realP hR).map (a.hom ≫ x) ≫ 𝟙 _ = (R.realP hR).map a.hom ≫ (R.realP hR).map x
+    rw [Category.comp_id, Functor.map_comp]
+  · change (R.realP hR).map (y ≫ c.inv) ≫ (R.realP hR).map c.hom = 𝟙 _ ≫ (R.realP hR).map y
+    rw [← Functor.map_comp, Category.assoc, Iso.inv_hom_id, Category.comp_id, Category.id_comp]
+  · change R.eta hR C' A' _ ≫ ((R.realP hR).map a.hom)⟦(1 : ℤ)⟧' =
+      (R.realP hR).map c.hom ≫ R.eta hR C A δ
+    rw [R.eta_pull' hR, R.eta_push' hR, Category.assoc, Category.assoc, ← Functor.map_comp,
+      ← Functor.map_comp, Iso.inv_hom_id, CategoryTheory.Functor.map_id,
+      CategoryTheory.Functor.map_id, Category.comp_id]
+
 omit [WellFoundedLT I] [Nonempty I] in
 lemma et3 {δ : (dataJ (D := D) (J := J)).Ext C A}
     {δ' : (dataJ (D := D) (J := J)).Ext C' A'} {x : A ⟶ B} {y : B ⟶ C} {x' : A' ⟶ B'}
