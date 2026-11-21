@@ -11,9 +11,15 @@ category with no triangulated embedding* by Haruhisa Enomoto, including the cite
 inputs that it uses. The formalized version is identified in
 [MANUSCRIPT.md](docs/MANUSCRIPT.md). Mathlib is the only dependency.
 
-Gorsky, Nakaoka and Palu asked whether every extriangulated category is an
-extension-closed subcategory of a triangulated category. The paper answers this
-negatively.
+Extriangulated categories (Nakaoka and Palu) axiomatize extension-closed subcategories of
+triangulated categories and are used in representation theory of algebras, cluster
+theory and homological algebra. Gorsky, Nakaoka and Palu asked whether every
+extriangulated category arises in this way, that is, has a triangulated embedding. The
+paper answers this negatively; the result concerns readers working on extriangulated,
+exact and triangulated categories and their enhancements. According to the paper, the
+question was open; no literature search beyond the paper's own bibliography was made for
+this repository. We know of no other formalization of extriangulated categories; this was
+not systematically searched.
 
 **Theorem A.** Over every field `k` there is an essentially small `k`-linear
 extriangulated category `C` such that
@@ -45,6 +51,23 @@ make `C_J` an extriangulated category with an algebraic realization), Corollary 
 Proposition 4.4 (the structure of `C(D)`), Proposition 4.6 (realizations for a
 countable cofinal subset or finite-dimensional `D_i`) and Example 4.2 (injections of
 countable ordinals into `ℕ`).
+
+## How the Lean proof goes
+
+The proof follows the paper, with the differences listed in
+[docs/proofs](docs/proofs/README.md). A triangulated embedding sends the conflations
+`A_i → P_i → Y` to triangles with the common third term `Y`; a vector of `D_i` gives a
+morphism from the shift of `X` to `Y`, and composing it with the connecting morphisms
+gives a compatible family, so every projection from `lim D` is surjective
+(`Criterion/Necessity.lean`). Conversely, a vector space mapping compatibly onto the
+`D_i` gives a fully faithful functor from `C_J` into the homotopy category of an additive
+category, which is algebraic triangulated (`Complexes/`), with realizations going to
+distinguished triangles and `η` bijective (`Realization/`); the axioms of `C(D)` and of
+each `C_J` are transported from there (Corollary 2.4). For Theorem A, Jech's tree is
+built by recursion on `ω₁` (`InverseSystems/Aronszajn.lean`), its linearization has zero
+limit by a finite-support argument (`InverseSystems/Linearization.lean`), and the
+structure of `C(D)` (Proposition 4.4) is computed from interval representations
+(`Intervals/`, `CD/`).
 
 ## What is compared
 
