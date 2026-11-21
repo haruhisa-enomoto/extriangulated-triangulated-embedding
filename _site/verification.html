@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Verification · An extriangulated category with no triangulated embedding</title><link rel="stylesheet" href="assets/site.css"></head>
+<body><a class="skip" href="#main">Skip to content</a><header class="site-header"><nav class="nav" aria-label="Main"><a class="brand" href="index.html">An extriangulated category with no triangulated embedding</a><a href="index.html">Overview</a><a href="statement.html">Statement</a><a href="proof.html">Proof guide</a><a href="library.html">Library</a><a href="api.html">API</a><a href="verification.html">Verification</a><a href="https://github.com/haruhisa-enomoto/extriangulated-triangulated-embedding">GitHub</a></nav></header>
+<main id="main"><p class="eyebrow">Reproducibility</p><h1>Verification and provenance</h1>
+<p>The library and its independent statement compile with Lean 4.36.0-rc2. Their axiom reports contain only <code>propext</code>, <code>Classical.choice</code>, and <code>Quot.sound</code>. The seven deliberate Challenge placeholders are not part of the proof.</p>
+<p>Local checks of November 22, 2026, after the audit fixes: fresh build, axiom audit, declaration scan and lake comparator (Lean kernel, NanoDa, con-ron). No hosted Palomar preflight has run yet.</p>
+<h2>Build the project</h2><pre><code>lake exe cache get
+lake build
+python3 scripts/audit_axioms.py
+python3 scripts/scan_axioms.py
+python3 scripts/generate_challenge.py --check
+lake build Challenge Solution</code></pre>
+<p>Build <code>Challenge Solution</code> before independent comparison with <code>scripts/verify-comparator.sh</code>.</p>
+<h2>What has been reviewed</h2><p>No human expert or independent audit has reviewed the Lean statements or the proofs. Lean checks the proofs; the match between <code>Challenge.lean</code> and the paper is a human judgement.</p>
+<h2>Source and attribution</h2><p>The development is maintained by Haruhisa Enomoto. The provenance record describes AI contributions, source revisions and licences.</p>
+<p><a href="https://github.com/haruhisa-enomoto/extriangulated-triangulated-embedding/blob/bd2180ea0d85e9949656fe9099b50d49a32111e3/PROVENANCE.md">Provenance</a> · <a href="https://github.com/haruhisa-enomoto/extriangulated-triangulated-embedding/blob/bd2180ea0d85e9949656fe9099b50d49a32111e3/VENDORED.md">Vendored code</a> · <a href="https://github.com/haruhisa-enomoto/extriangulated-triangulated-embedding/blob/bd2180ea0d85e9949656fe9099b50d49a32111e3/docs/PAPER-CORRESPONDENCE.md">Paper correspondence</a></p>
+<p><a href="https://github.com/haruhisa-enomoto/extriangulated-triangulated-embedding/blob/bd2180ea0d85e9949656fe9099b50d49a32111e3/docs/VERIFICATION.md">Detailed verification records and reproduction commands</a></p>
+</main><footer class="site-footer">Source: <a href="https://github.com/haruhisa-enomoto/extriangulated-triangulated-embedding/tree/bd2180ea0d85e9949656fe9099b50d49a32111e3">bd2180e</a> · API: <a href="https://github.com/haruhisa-enomoto/extriangulated-triangulated-embedding/tree/fa1a0db3dfc3ab9e9b17bd80e27f29d610791c2c">fa1a0db</a><br>Haruhisa Enomoto · Lean formalization · Apache-2.0</footer></body></html>
