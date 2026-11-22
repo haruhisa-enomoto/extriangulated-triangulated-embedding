@@ -19,10 +19,11 @@ them and does not import the Challenge.
 
 ## Results
 
-The [record of November 22, 2026, after the audit fixes](../verification/2026-11-22-audit-fixes/README.md)
-gives the current local results and the hashes; the
-[first record](../verification/2026-11-22/README.md) is for the first release. No hosted
-Palomar preflight has run yet.
+The [record of the Palomar registration](../verification/2026-11-22-palomar/README.md) gives
+the current local results, the hosted Palomar preflight and the hashes for commit `5575383`,
+registered as
+[PALOMAR-2026-11-22-000005](https://palomar-registry.org/entry.html?id=PALOMAR-2026-11-22-000005&version=1).
+Earlier records are listed in [`verification/`](../verification/README.md).
 
 No human expert has reviewed the Lean statements or the proofs. Lean checks the
 proofs; whether `Challenge.lean` says what the paper says is a human judgement.

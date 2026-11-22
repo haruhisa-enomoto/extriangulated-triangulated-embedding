@@ -5,7 +5,8 @@
 [Main theorems in Lean](ExtriangulatedRealization/MainTheorems.lean) ·
 [Independent statement](ExtriangulatedRealization/Statement.lean) ·
 [Paper correspondence](docs/PAPER-CORRESPONDENCE.md) ·
-[Verification](docs/VERIFICATION.md)
+[Verification](docs/VERIFICATION.md) ·
+[Palomar entry](https://palomar-registry.org/entry.html?id=PALOMAR-2026-11-22-000005&version=1)
 
 This repository contains a Lean 4 formalization of the paper *An extriangulated
 category with no triangulated embedding* by Haruhisa Enomoto
@@ -113,6 +114,9 @@ declarations.
 
 ## Review
 
+Registered on Palomar as
+[PALOMAR-2026-11-22-000005](https://palomar-registry.org/entry.html?id=PALOMAR-2026-11-22-000005&version=1)
+(commit `5575383`); Palomar's automated editorial review found no blocking problem.
 No human expert has reviewed the Lean statements or the proofs. An independent agent
 audit (Codex, November 22, 2026) confirmed the main results and found that the Challenge
 exceeded Palomar's line limit, that Propositions 2.3 and 4.4 were stated more weakly than
