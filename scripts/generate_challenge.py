@@ -8,8 +8,9 @@ ROOT = Path(__file__).resolve().parents[1]
 THEOREM = """
 universe u v' u'
 
-/-- **Theorem A** (= Theorem 4.5). -/
-theorem ExtriangulatedRealization.Challenge.theoremA : ExtriangulatedRealization.Statement.TheoremA.{u, v', u'} := by
+/-- **Theorem A** (= Theorem 4.5): one fixed category `C(D)`; with `theoremB_necessity` below it
+has no triangulated embedding in any universes. -/
+theorem ExtriangulatedRealization.Challenge.theoremA : ExtriangulatedRealization.Statement.TheoremA.{u} := by
   sorry
 /-- **Theorem B** (= Theorem 3.1). -/
 theorem ExtriangulatedRealization.Challenge.theoremB : ExtriangulatedRealization.Statement.TheoremB.{u} := by

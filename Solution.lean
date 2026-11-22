@@ -6,12 +6,13 @@ public import ExtriangulatedRealization
 
 universe u v' u'
 
-/-- **Theorem A** (Theorem 4.5). Over every field there is an essentially small linear
-extriangulated category with no triangulated embedding, whose countable families of objects lie in
-extension-closed subcategories with algebraic realizations, and which is hereditary,
-Krull–Schmidt, with enough injectives and `ℵ₁` indecomposables. -/
+/-- **Theorem A** (Theorem 4.5). Over every field there is one essentially small linear
+extriangulated category `C(D)`, with not all projections `lim D → D_i` surjective (so, by
+`theoremB_necessity`, with no triangulated embedding in any universes), whose countable families
+of objects lie in extension-closed subcategories with algebraic realizations, and which is
+hereditary, Krull–Schmidt, with enough injectives and `ℵ₁` indecomposables. -/
 theorem ExtriangulatedRealization.Challenge.theoremA :
-    ExtriangulatedRealization.Statement.TheoremA.{u, v', u'} :=
+    ExtriangulatedRealization.Statement.TheoremA.{u} :=
   ExtriangulatedRealization.theoremA
 
 /-- **Theorem B** (Theorem 3.1). `C(D)` admits a triangulated embedding if and only if every

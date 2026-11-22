@@ -105,8 +105,9 @@ related_formalizations:
 
 status:
   scope: >-
-    Theorem A (with the nonembedding into triangulated categories in all
-    universes), Theorem B, the necessity part of Theorem B for triangulated
+    Theorem A for one fixed category C(D), whose nonembedding into triangulated
+    categories in all universes follows with the compared necessity part of
+    Theorem B, Theorem B, the necessity part of Theorem B for triangulated
     targets in all universes, Proposition 2.3, Corollary 2.4, Proposition 4.4
     and Proposition 4.6, as stated in the paper, for an arbitrary field. The
     compared statements in Challenge.lean use only Mathlib definitions. Every
@@ -179,7 +180,7 @@ alignment:
       lean: "ExtriangulatedRealization.Challenge.theoremA"
       module: "Challenge"
       status: "proved"
-      note: "Proved in Solution.lean from ExtriangulatedRealization.theoremA."
+      note: "Proved in Solution.lean from ExtriangulatedRealization.theoremA. The statement fixes the witness C(D) and states that not every projection lim D → D_i is surjective; with theoremB_necessity (all target universes) this one category has no triangulated embedding in any universes."
     - source: "An extriangulated category with no triangulated embedding, Theorem B (= Theorem 3.1)"
       lean: "ExtriangulatedRealization.Challenge.theoremB"
       module: "Challenge"

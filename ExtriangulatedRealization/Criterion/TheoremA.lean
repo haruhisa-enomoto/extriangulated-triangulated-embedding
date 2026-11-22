@@ -24,7 +24,7 @@ namespace ExtriangulatedRealization
 
 open CategoryTheory Opposite Statement Cardinal
 
-universe u v' u'
+universe u
 
 variable (k : Type u) [Field k]
 
@@ -47,27 +47,28 @@ lemma rank_treeSystem_le (i : Omega1.{u}) : Module.rank k ((treeSystem k).obj (o
   have := Aronszajn.countable_system_obj i
   exact Cardinal.mk_le_aleph0
 
-/-- **Theorem A (= Theorem 4.5).** -/
-theorem theoremA : TheoremA.{u, v', u'} := by
+/-- **Theorem A (= Theorem 4.5).** The witness is `C(D)` for the system `D` of Construction 4.3;
+with `theoremB_necessity` it has no triangulated embedding in any universes. -/
+theorem theoremA : TheoremA.{u} := by
   intro k _
   let D := treeSystem k
   have hD : HasSurjectiveTransitions D := treeSystem_hasSurjectiveTransitions k
-  refine ⟨CD D, inferInstance, inferInstance, inferInstance, inferInstance, inferInstance,
-    cdData D, cdData_isExtriangulated D hD, essentiallySmall_CD D, ?_, ?_,
+  refine ⟨Omega1.{u}, inferInstance, inferInstance, inferInstance, D, hD,
+    treeSystem_not_projectionsSurjective k, cdData_isExtriangulated D hD, essentiallySmall_CD D,
+    fun h => treeSystem_not_projectionsSurjective k
+      (theoremB_necessity.{u, u, max 1 u} k _ D hD h), ?_,
     cdData_isHereditary D, isKrullSchmidt_CD D, cd_hasEnoughInjectives D hD,
     mk_indecomposableClasses D Omega1.mk_eq,
     fun X hX f => existsUnique_smul_of_isIndecomposable D hX f,
     fun A C hA hC => rank_ext_le_one_of_isIndecomposable D hA hC,
     rank_hom_le_aleph0 D (rank_treeSystem_le k)⟩
-  · exact fun h =>
-      treeSystem_not_projectionsSurjective k (theoremB_necessity.{u, v', u'} k _ D hD h)
-  · intro S hS
-    obtain ⟨m, hm⟩ := exists_labelsIn_Iic_of_countable D
-      (fun _ hT => Omega1.bddAbove_of_countable hT) hS
-    obtain ⟨hclosed, hext, -, hreal⟩ := (corollary_2_4 k _ D hD).2.2 (Set.Iic m)
-    refine ⟨subcatJ D (Set.Iic m), hclosed, fun X hX => ?_, hext,
-      hreal ⟨m, Set.mem_Iic.mpr le_rfl, fun _ hi => hi⟩⟩
-    rw [subcatJ_eq_labelsIn]
-    exact hm X hX
+  intro S hS
+  obtain ⟨m, hm⟩ := exists_labelsIn_Iic_of_countable D
+    (fun _ hT => Omega1.bddAbove_of_countable hT) hS
+  obtain ⟨hclosed, hext, -, hreal⟩ := (corollary_2_4 k _ D hD).2.2 (Set.Iic m)
+  refine ⟨subcatJ D (Set.Iic m), hclosed, fun X hX => ?_, hext,
+    hreal ⟨m, Set.mem_Iic.mpr le_rfl, fun _ hi => hi⟩⟩
+  rw [subcatJ_eq_labelsIn]
+  exact hm X hX
 
 end ExtriangulatedRealization

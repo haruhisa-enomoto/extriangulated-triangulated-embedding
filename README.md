@@ -78,7 +78,13 @@ structure of `C(D)` (Proposition 4.4) is computed from interval representations
 It states seven endpoints: Theorem A, Theorem B, the necessity part of Theorem B for
 triangulated targets in all universes, Proposition 2.3, Corollary 2.4,
 Proposition 4.4 and Proposition 4.6. [`Solution.lean`](Solution.lean) proves them from
-the library. The statement file defines, with Mathlib only: extriangulated data and the
+the library. The compared Theorem A names one fixed witness, the category `C(D)` of an
+inverse system `D` with surjective transitions, and states that not every projection
+`lim D → D_i` is surjective; together with the compared necessity part of Theorem B, which
+holds for triangulated targets in all universes, this one category has no triangulated
+embedding in any universe. (A statement of the form "for all target universes there is a
+category" would let the category depend on the universes, since Lean puts universe
+variables outermost.) The statement file defines, with Mathlib only: extriangulated data and the
 axioms of Nakaoka and Palu; extriangulated functors (Bennett-Tennenhaus and Shah);
 triangulated embeddings and realizations; exact and Frobenius structures and algebraic
 triangulated categories; the category `C(D)` and its subcategories `C_J`; and the

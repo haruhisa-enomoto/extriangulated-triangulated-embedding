@@ -1008,27 +1008,32 @@ def Proposition_4_6 : Prop :=
     ((∀ i, FiniteDimensional k (D.obj (op i))) →
         (cdData D).HasAlgebraicRealization.{_, _, _, _, u, max 1 u})
 
-/-- **Theorem A (= Theorem 4.5).** Over every field `k` there is an essentially small `k`-linear
-extriangulated category `C` such that
-(1) `C` has no triangulated embedding (into a triangulated category in any universes);
-(2) every countable family of objects of `C` lies in a full extension-closed subcategory having
-an algebraic realization;
-(3) `C` is hereditary, Krull–Schmidt, has enough injectives and `ℵ₁` isomorphism classes of
+/-- **Theorem A (= Theorem 4.5).** Over every field `k` there is an inverse system `D` of
+`k`-vector spaces with surjective transition maps over a nonempty well-ordered set such that the
+essentially small `k`-linear extriangulated category `C(D)` satisfies:
+(1) `C(D)` has no triangulated embedding. Not every projection `lim D → D_i` is surjective, so
+by `TheoremB_necessity`, which holds for triangulated targets in all universes, this one
+category has no triangulated embedding into a triangulated category in any universes; the
+nonembedding is also stated directly for targets in the universes of `C(D)`;
+(2) every countable family of objects of `C(D)` lies in a full extension-closed subcategory
+having an algebraic realization;
+(3) `C(D)` is hereditary, Krull–Schmidt, has enough injectives and `ℵ₁` isomorphism classes of
 indecomposables, each with endomorphism ring `k`; `dim_k E(C, A) ≤ 1` for indecomposables
 `A, C`; and every morphism space has at most countable dimension. -/
 def TheoremA : Prop :=
-  ∀ (k : Type u) [Field k], ∃ (C : Type (max 1 u)) (_ : Category.{u} C) (_ : Preadditive C)
-    (_ : Linear k C) (_ : HasFiniteBiproducts C) (_ : HasBinaryBiproducts C)
-    (𝔼 : ExtriangulatedData.{u + 1} k C),
-    𝔼.IsExtriangulated ∧ EssentiallySmall.{u} C ∧
-    ¬ 𝔼.HasTriangulatedEmbedding.{_, _, _, _, v', u'} ∧
-    (∀ S : Set C, S.Countable → ∃ P : ObjectProperty C, P.IsClosedUnderIsomorphisms ∧
-      (∀ X ∈ S, P X) ∧ 𝔼.IsExtensionClosed P ∧
-      (𝔼.restrict P).HasAlgebraicRealization.{_, _, _, _, u, max 1 u}) ∧
-    𝔼.IsHereditary ∧ IsKrullSchmidt C ∧ 𝔼.HasEnoughInjectives ∧
-    Cardinal.mk (IndecomposableClasses C) = Cardinal.aleph 1 ∧
-    (∀ X : C, IsIndecomposable X → ∀ f : X ⟶ X, ∃! c : k, f = c • 𝟙 X) ∧
-    (∀ A C' : C, IsIndecomposable A → IsIndecomposable C' → Module.rank k (𝔼.Ext C' A) ≤ 1) ∧
-    (∀ X Y : C, Module.rank k (X ⟶ Y) ≤ Cardinal.aleph0)
+  ∀ (k : Type u) [Field k], ∃ (I : Type u) (_ : LinearOrder I) (_ : WellFoundedLT I)
+    (_ : Nonempty I) (D : Iᵒᵖ ⥤ ModuleCat.{u} k),
+    HasSurjectiveTransitions D ∧ ¬ ProjectionsSurjective D ∧
+    (cdData D).IsExtriangulated ∧ EssentiallySmall.{u} (CD D) ∧
+    ¬ (cdData D).HasTriangulatedEmbedding.{_, _, _, _, u, max 1 u} ∧
+    (∀ S : Set (CD D), S.Countable → ∃ P : ObjectProperty (CD D), P.IsClosedUnderIsomorphisms ∧
+      (∀ X ∈ S, P X) ∧ (cdData D).IsExtensionClosed P ∧
+      ((cdData D).restrict P).HasAlgebraicRealization.{_, _, _, _, u, max 1 u}) ∧
+    (cdData D).IsHereditary ∧ IsKrullSchmidt (CD D) ∧ (cdData D).HasEnoughInjectives ∧
+    Cardinal.mk (IndecomposableClasses (CD D)) = Cardinal.aleph 1 ∧
+    (∀ X : CD D, IsIndecomposable X → ∀ f : X ⟶ X, ∃! c : k, f = c • 𝟙 X) ∧
+    (∀ A C' : CD D, IsIndecomposable A → IsIndecomposable C' →
+      Module.rank k ((cdData D).Ext C' A) ≤ 1) ∧
+    (∀ X Y : CD D, Module.rank k (X ⟶ Y) ≤ Cardinal.aleph0)
 
 end ExtriangulatedRealization.Statement
